@@ -1,36 +1,13 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: Willkommen bei 'ohne Titel'
+tagline: Webelexis und Anderes.
 ---
 {% include JB/setup %}
 
-Read [Jekyll Quick Start](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+Ein Notizbuch ohne viel Struktur.
 
-Complete usage and documentation available at: [Jekyll Bootstrap](http://jekyllbootstrap.com)
-
-## Update Author Attributes
-
-In `_config.yml` remember to specify your own data:
-    
-    title : My Blog =)
-    
-    author :
-      name : Name Lastname
-      email : blah@email.test
-      github : username
-      twitter : username
-
-The theme should reference these variables whenever needed.
-    
-## Sample Posts
-
-This blog contains sample posts which help stage pages and blog data.
-When you don't need the samples anymore just delete the `_posts/core-samples` folder.
-
-    $ rm -rf _posts/core-samples
-
-Here's a sample "posts list".
+Erstmal die Einträge..
 
 <ul class="posts">
   {% for post in site.posts %}
@@ -38,9 +15,23 @@ Here's a sample "posts list".
   {% endfor %}
 </ul>
 
-## To-Do
+Dann die Theorie, falls sich jemand dafür interessiert...
 
-This theme is still unfinished. If you'd like to be added as a contributor, [please fork](http://github.com/plusjade/jekyll-bootstrap)!
-We need to clean up the themes, make theme usage guides with theme-specific markup examples.
+Das ist ein simples statisches Blog, erstellt mit [Jekyll Bootstrap](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+
+Der Trend bei Publikationssoftware geht ja zu immer komplexeren Framworks. Das Aufsetzen von Wordpress&Co ist alles Andere als trivial, und man braucht nicht nur einen Webserver, der dynamischen content erstellen kann, sondern auch eine Datenbank. Okay, beides ist heutzutage in den meisten Hosting Angeboten drin, aber schon allein die Fragen "Was muss jetzt alles ins Backup?" und "Wie geht ein Restore aus dem Backup?" können unsereinen als Hobby-Webhoster durchaus überfordern.
+
+Jekyll geht einen anderen Weg: Die Seiten werden einfach als Markdown-Files erstellt. Jekyll kompiliert sie, baut sie ins gewählte Theme ein und fertig ist die rein statische Website. Sie braucht nur einen sehr simplen Webserver, zum Beispiel den, der in Jekyll eingebaut ist: `jekyll serve`genügt.
+
+Und jekyll bootstrap stellt alles zusammen, was man zum Start braucht. Man erhält ein GitHub- Repository, welches zufällig gleichzeitig ein Blog (oder eine Website) ist. Backup ist nicht nötig, da man mit `git clone`sowieso eine Kopie auf dem eigenen Computer bekommt. Und posten bedeutet einfach: Neue Seite erstellen, `git commit`, `git push`, fertig. Also die Abläufe, die wir als Entwickler sowieso blind tippen können :)
 
 
+
+
+## Einträge erstellen
+
+(Memo für mich)
+
+`rake post title=<title> [tags=<tags>] [category=<category>]`
+
+Oder natürlich einfach mit dem Jekyll-Package für [Atom](http://www.atom.io).

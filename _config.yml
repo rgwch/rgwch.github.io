@@ -11,7 +11,7 @@ highlighter: pygments
 title : Webelexis
 tagline: Dies und jenes
 author :
-  name : Gerry Weirich
+  name : rgwch
   email : weirich@elexis.ch
   github : rgwch
   twitter : elexis_develop
@@ -79,7 +79,7 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   comments :
-    provider : disqus
+    provider : false
     disqus :
       short_name : jekyllbootstrap
     livefyre :
