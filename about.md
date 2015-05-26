@@ -1,16 +1,9 @@
 ---
-layout: page
+layout: default
 title: About
-description: ''
+description: 'Über diese Seite'
 ---
 
-{% include JB/setup %}
 
-# Title
-Test
-- list item
-- list item
 
-## Title two
-
-end so
+Das ist ein Notizbuch für verschiedene Themen rund ums Programmieren. Kein literarischer Anspruch.
