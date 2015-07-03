@@ -10,16 +10,16 @@ Ich gebe es zu: Ich war nie ein grosser Freund von Maven. Selber wäre ich nie a
 einem halben Meter Länge zu tippen, nur um ein Programm zu kompilieren. Maven konnte schliesslich nichts, was ein gewöhnliches Shell-Script
 nicht auch gekonnt hätte, nicht wahr?
 
-Doch immer mehr fremde Projekte basieren auf Maven. Entweder die spinnen alle, oder es muss doch was dran sein. Aber MAven macht
+Doch immer mehr fremde Projekte basieren auf Maven. Entweder die spinnen alle, oder es muss doch was dran sein. Aber Maven macht
 es einem nicht leicht: Wann immer ich ein fremdes Projekt kompilieren woolte, und hoffnungsfroh "mvn build" eingab, produzierte das Ding 
 eine gigantische Fehlermeldung, der man entnehmen konnte, dass "build" wohl keine ihm genehme "lifecycle phase" sei. Allerdings
 bequemte es sich auch nicht, anzugeben, was ihm denn für lifecycle Phasen besser gefallen würden. Auch ein "mvn -help" hilft da nicht wirklich.
 
 Es half also nichts, man musste die Dokumentation lesen. Und wer die Apache Foundation kennt, der weiss, es gibt zu jedem Projekt tonnenweise
-Dokumentation, die sich vor allem dadurch auszeichnet, dass sie für einen Einsteiger ins jeweilige Projekt praktisch unverständlich ist. So auch bei
+Dokumentation, die sich vor allem dadurch auszeichnet, dass sie für einen Einsteiger ins jeweilige Projekt praktisch vollkommen unverständlich ist. So auch bei
 Maven. Immerhin kann man mit ein wenig Mühe die standardmässig vorhandenen erlaubten Funktionen herausfinden. Zum Beispiel `mvn install`.
 
-Und auch hier bewahrheitet sich, was man von anderen Apüache Projekten kennt: Das Kommando tut keineswegs das, was man von ihm erwartet. Wer Linux kennt, der erwartet von `mvn install` irgendwie dasselbe, wie von `make install` eines Linux-Pakets: Das Programm oder die Library wird ausführbereit im System installiert. Nichts da. 
+Und auch hier bewahrheitet sich, was man von anderen Apache Projekten kennt: Das Kommando tut keineswegs das, was man von ihm erwartet. Wer Linux kennt, der erwartet von `mvn install` irgendwie dasselbe, wie von `make install` eines Linux-Pakets: Das Programm oder die Library wird ausführbereit im System installiert. Nichts da. 
 Immerhin: `mvn compile`, `mvn test` und `mvn package` tun das, was man denkt. Allerdings mit so viel output, dass man kaum erkennt, ob es nun funktioniert hat, oder nicht. Und oft steht inmitten der drei Meter output irgendwo ganz unschuldig ein halber Meter voll mit "ERROR" Zeilen. Allerdings sieht man das erst nach langer Zeit, da Maven grundsätzlich zumindest beim ersten 'compile' erst mal das halbe Internet herunterlädt. Also 
 
 *Güldene Regel 1: Maven niemals von einem teuren Netzwerk aus starten. Nur Flatrate*
