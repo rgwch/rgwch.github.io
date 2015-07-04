@@ -91,7 +91,7 @@ oben im ersten Absatz stehendem Link heruntergeladen werden.
             </dependencies>
         </project>
 
-Das Einzige, was anders ist, als bei anderen Maven-Projekten, ist <packaging>
+Das Einzige, was anders ist, als bei anderen Maven-Projekten, ist &lt;packaging&gt;
 
 Und dann im Wesentlichen der Klasse ch.rgw.mmp.MimosaMavenPlugin.java:
 
@@ -175,7 +175,7 @@ Der Aufruf unseres Plugins in der pom.xml von webelexis-server sieht so aus:
       
 Hier wird deklariert, welche Parameter das Plugin bekommt, nämlich das Basisverzeichnis des Client-Projekts, 
 dessen Ausgabeverzeichnis, sowie das endgültige Zielverzeichnis im Server-Projekt.
-Dann werd unter <executions> festgelegt, wann es ausgeführt wird, und welches Kommando ausgeführt wird:
+Dann wird unter &lt;executions&gt; festgelegt, wann es ausgeführt wird, und welches Kommando ausgeführt wird:
 Wir möchten, dass in der Phase "process-resources" das Kommando "mimosa" unseres Plugins ausgeführt wird. Danach
 soll der Inhalt des mimosa-Ausgabeverzeichnisses ins Unterverzeichnis "web" des server-Ausgabeverzeichnisses
 kopiert werden. 
@@ -184,7 +184,92 @@ Das ist eigentlich alles. Wenn wir jetzt zunächst im Verzeichnis mimosa-maven-p
 können wir anschliessend im Server-Verzeichnis `mvn package` aufrufen und erhalten am Ende ein .jar, welches
 den verarbeiteten Server- und Client- Code enthält.
 
-### Publish or perish
+## Publish or perish
 
 Um ein Plugin auch anderen zur Verfügung zu stellen, muss man ein wenig mehr Aufwand betreiben. Bisher haben wir es ja
 nur mittels `mvn install`im lokalen Repository installiert.
+
+Wir könnten es z.B. nach maven central schicken, oder an einen anderen vom Internet aus erreichbaren Ort. Im Prinzip spielt das
+keine Rolle. Ich zeige hier das Vorgehen für Bintray. Bintray ist ein Hoster für Binärdateien von OpenSource Projekten.
+Die Firma ist sehr liberal. Ausser einem kostenlosen Konto gibt es keine Voraussetzungen. Mit einem solchen kostenlosen Konto hat man
+automatisch ein Maven-Repository (und zusätzlich auch Repositories für rpm, debian, docker und Anderes).
+
+Nach dem Erstellen eines Kontos geht es los:
+
+#### Package erstellen:
+
+* Maven -> Add new Package
+
+* Name: mimosa-maven-plugin (Der Name ist nicht ganz zufällig gewählt, sondern wird von Apache so vorgeschlagen. Auf keinen Fall
+sollte man sein Plugin etwa "maven-mimosa-plugin" nennen, da alle Namen beginnend mit "Maven" für Apache reserviert sind.
+Selbstverständlich beachten wir dieses Anliegen.)
+
+* Licenses: Hier muss man mindestens eine OpenSource Lizenz eingeben. Das ist Bedingung für das kostenlose Hosten auf Bintray
+
+* Version Control: Hier muss man angeben, wo der Quellcode zu finden ist. In unserem Fall ist das http://gitlab.com/rgwch/mimosa-maven-plugin.
+
+Alle anderen Felder sind nicht zwingend.
+
+Mit "Create Package" wird die Package dann erstellt. 
+
+#### Version erstellen
+
+Das eben erstellte mimosa-maven-plugin package anwählen und dort "new version" eingeben. Idealerweise gibt man hier
+dasselbe ein, was man auch in der pom.xml eingetragen hat (das wird zar nicht überprüft, erscheint aber vernünftig).
+
+#### Dateien hochladen
+
+Die eben erstellte Version anklicken und "upload file" wählen. **Wichtig** ist nun das Feld *Target repository path*.
+Hier muss der maven-konforme Pfad (also so wie im lokalen maven repository) eingegeben werden. In unserem Fall ist das:
+rgwch/mimosa-maven-plugin/1.0.1
+
+Dann muss man mindestens zwei Dateien hochladen: 
+
+* mimosa-maven-plugin-1.0.1.jar
+* mimosa-maven-plugin-1.0.1.pom
+
+Das zweite ist die pom.xml, die vor dem Hochladen so umbenannt werden muss.
+
+Nachdem wir für beide Dateien "publish" freigegeben haben, sind sie vom Internet aus erreichbar. Allerdings
+wird Maven sie nicht finden.
+
+### pom.xml anpassen
+
+Folgender Eintrag in pom.xml von webelexis-server löst dieses Problem:
+
+    <pluginRepositories>
+        <pluginRepository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-rgwch-maven</id>
+            <name>bintray-plugins</name>
+            <url>http://dl.bintray.com/rgwch/maven</url>
+        </pluginRepository>
+        <pluginRepository>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>http://repo.maven.apache.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+Damit erklären wir Maven, dass es Plugins nicht nur in repo.maven.apache.org, sondern auch in dl.bintray.com/rgwch/maven
+suchen soll.
+
+Jetzt kann jeder nodejs- und maven-Besitzer Webelexis sehr einfach selber bauen: 
+
+    git clone https://github.com/rgwch/webelexis.git
+    sudo npm install -g mimosa
+    cd webelexis/webelexis-server
+    mvn package
+    
+Das ist alles. Das mimosa-maven-plugin wird im Rahmen von mvn package automatisch von bintray  heruntergeladen,
+installiert und ausgeführt.
+
+    
