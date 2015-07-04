@@ -6,28 +6,47 @@ category: Programmieren allgemein
 tags: [Programmieren, Maven]
 ---
 
+### Eine Polemik für blutige Maven-Anfänger (und solche, die es werden wollen)
+
+Disclaimer: Maven ist ein grossartiges Projekt und ein unglaublich mächtiges Werkzeug. Und die Apache Foundation ist von riesiger Bedeutung
+für die OpenSource Welt und hat enorm viel dazu beigetragen, dass unsere Software heute so leistungsfähig ist. Nur, leider erschliesst sich 
+ihr Charme dem Unvorbereiteten nicht sofort. Und dieser Unvorbereitete wird sich möglicherweise in diesem Blogpost teilweise wiedererkennen.
+
+---- 
+
+### Kontaktaufnahme
+
 Ich gebe es zu: Ich war nie ein grosser Freund von Maven. Selber wäre ich nie auf die Idee gekommen, eine XML-Datei von 
 einem halben Meter Länge zu tippen, nur um ein Programm zu kompilieren. Maven konnte schliesslich nichts, was ein gewöhnliches Shell-Script
 nicht auch gekonnt hätte, nicht wahr?
 
 Doch immer mehr fremde Projekte basieren auf Maven. Entweder die spinnen alle, oder es muss doch was dran sein. Aber Maven macht
-es einem nicht leicht: Wann immer ich ein fremdes Projekt kompilieren woolte, und hoffnungsfroh "mvn build" eingab, produzierte das Ding 
-eine gigantische Fehlermeldung, der man entnehmen konnte, dass "build" wohl keine ihm genehme "lifecycle phase" sei. Allerdings
-bequemte es sich auch nicht, anzugeben, was ihm denn für lifecycle Phasen besser gefallen würden. Auch ein "mvn -help" hilft da nicht wirklich.
+es einem nicht leicht: Wann immer ich ein fremdes Projekt kompilieren wollte, und hoffnungsfroh "mvn build" eingab, produzierte das Ding 
+eine gigantische Fehlermeldung, der man nach längerem Studium entnehmen konnte, dass "build" wohl keine ihm genehme "lifecycle phase" sei. Was auch immer das bedeutet. Allerdings
+bequemte es sich auch nicht, anzugeben, was ihm denn für lifecycle Phasen besser gefallen würden. Auch ein "mvn -help" hilft da nicht wirklich. Und 'mvn' 
+ohne Parameter liefert ebenfalls nur ein paar Dezimeter Fehlermeldungen statt irgendwelcher hilfreicher Angaben (Wer auf die Idee kommt, maven wie empfohlen
+mit dem -X switch zu starten, bekommt als Belohnung ein paar Meter statt nur Dezimeter unverständlicher Meldungen an den Kopf geworfen). 
 
 Es half also nichts, man musste die Dokumentation lesen. Und wer die Apache Foundation kennt, der weiss, es gibt zu jedem Projekt tonnenweise
 Dokumentation, die sich vor allem dadurch auszeichnet, dass sie für einen Einsteiger ins jeweilige Projekt praktisch vollkommen unverständlich ist. So auch bei
-Maven. Immerhin kann man mit ein wenig Mühe die standardmässig vorhandenen erlaubten Funktionen herausfinden. Zum Beispiel `mvn install`.
+Maven. Immerhin kann man mit ein wenig Mühe die standardmässig vorhandenen erlaubten Funktionen, Verzeihung: lifecycle-phasen, [herausfinden](https://maven.apache.org/run-maven/index.html#Quick_Start).
+ Zum Beispiel `mvn install`.
 
-Und auch hier bewahrheitet sich, was man von anderen Apache Projekten kennt: Das Kommando tut keineswegs das, was man von ihm erwartet. Wer Linux kennt, der erwartet von `mvn install` irgendwie dasselbe, wie von `make install` eines Linux-Pakets: Das Programm oder die Library wird ausführbereit im System installiert. Nichts da. 
-Immerhin: `mvn compile`, `mvn test` und `mvn package` tun das, was man denkt. Allerdings mit so viel output, dass man kaum erkennt, ob es nun funktioniert hat, oder nicht. Und oft steht inmitten der drei Meter output irgendwo ganz unschuldig ein halber Meter voll mit "ERROR" Zeilen. Allerdings sieht man das erst nach langer Zeit, da Maven grundsätzlich zumindest beim ersten 'compile' erst mal das halbe Internet herunterlädt. Also 
+Und auch hier bewahrheitet sich, was man von anderen Apache Projekten kennt: Das Kommando tut keineswegs das, was man von ihm erwartet. Wer Linux kennt, der erwartet von 
+`mvn install` irgendwie dasselbe, wie von `make install` eines Linux-Pakets: Das Programm oder die Library wird kompiliert und ausführbereit im System installiert. Nichts da. Die Apache
+Dockumentation erläutert, hilfreich wie immer, dass das Projekt so ins "local repository" installiert wird. Ohne allerdings darauf einzugehen, wo dieses Repository ist und 
+wozu man es braucht. Wer glaubt, so ein Maven-Repository sei irgendwie so etwas wie ein git-Repository, der täuscht sich, soviel sei schon einmal verraten.
+
+Immerhin: `mvn compile`, `mvn test` und `mvn package` tun das, was man denkt. Allerdings mit so viel output, dass man kaum erkennt, ob es nun funktioniert hat, oder nicht. 
+Und oft steht inmitten der drei Meter output irgendwo ganz unschuldig ein halber Meter voll mit "ERROR" Zeilen. Allerdings sieht man das erst nach langer Zeit, da Maven grundsätzlich zumindest beim ersten 'compile' erst mal das halbe Internet herunterlädt. Also 
 
 *Güldene Regel 1: Maven niemals von einem teuren Netzwerk aus starten. Nur Flatrate*
 
 Erst wenn das Projekt schon mal erfolgreich gepackaged wurde, sind die Datenmengen kleiner. Aber Achtung: Jede unschuldige Versionsänderung
  des Hauptprogramms kann dazu führen, dass auch das halbe Internet in neuen Versionen heruntergeladen werden muss. Und irgendwie weiss man 
  nie, wieso das so ist. Klar: Es hängt irgendwie mit diesem ominösen `pom.xml` zusammen, von dem es immer eins oder mehrere in einem Maven-Projekt
- gibt. Bloss: In diesem pom.xml steht niemals alles, was maven tut. Irgendetwas tut es heimlich. Manche IDEs geben einem die Möglichkeit, die *effective POM* eines Maven-Projekts anzusehen. DIe ist dann plötzlich sehr, sehr viel länger, allerdings versteht der interessierte Einsteiger kaum, wieso das eigentlich so ist.
+ gibt. Bloss: In diesem pom.xml steht niemals alles, was maven tut. Irgendetwas tut es heimlich. Manche IDEs geben einem die Möglichkeit, die "*effective POM*"
+  eines Maven-Projekts anzusehen. Die ist dann plötzlich sehr, sehr viel länger, allerdings versteht der interessierte Einsteiger kaum, wieso das eigentlich so ist.
  
 Verblüffenderweise ist das alles gar nicht mal so kompliziert, wenn man mal hinters Prinzip gekommen ist. Doch zunächst brauchen wir, um ein eigenes Testprojekt zu starten, eine IDE. Und hier kommt eine Werbeeinblendung:
 
@@ -36,8 +55,9 @@ Verblüffenderweise ist das alles gar nicht mal so kompliziert, wenn man mal hin
 
 **Werbeeinblendung:**
  
- Als früherer Eclipse-Fan empfehle ich IntelliJ Idea. Eclipse wurde immer grösser und träger und wirft bei mir bei jedem Start eine Menge Fehlermeldungen. Ausserdem ist der Maven Support  (und auch der JavaScript Support, aber das ist eine andere GEschichte) doch sehr bescheiden.
- Idea kostet zwar etwas, ist aber flink und hilfreich sowohl bei pom.xml als auch bei Javascript.
+ Als früherer Eclipse-Fan empfehle ich IntelliJ Idea. Eclipse wurde immer grösser und träger und wirft bei mir bei jedem Start eine Menge Fehlermeldungen. 
+ Ausserdem ist der Maven Support  (und auch der JavaScript Support, aber das ist eine andere Geschichte) doch sehr bescheiden.
+ Idea kostet zwar etwas und versprüht designmässig einen eher spröden Charme, ist aber flink und hilfreich sowohl bei pom.xml als auch bei Javascript.
 
 
 ----
@@ -63,12 +83,13 @@ Der grösste Teil meiner Schwierigkeiten mit Maven kam daher, dass ich Mavern ir
                 (da kommt alles hin, was nicht zu kompilieren ist)
         - [test]
             - [java]
-                (da kommen die TEstklassen hin)
+                (da kommen die Testklassen hin)
             - [resources]
                 (was nicht zu kompilieren ist und auch nicht ins Endprodukt muss)
       
 
-Der Name des Hauptverzeichnisses (hier [Top]) ist frei wählbar und sollte der Projektname sein. Weitere Dateien und Verzeichnisse dürfen mit hinein, aber die hier gezeigten müssen existieren und müssen genau so heissen (ohne die eckigen Klammern). Unterhalb von [main]/[java] und [test]/[java] kann eine beliebig tiefe Struktur von Packages und Java-Quelldateien sein. 
+Der Name des Hauptverzeichnisses (hier [Top]) ist frei wählbar und sollte der Projektname sein. Weitere Dateien und Verzeichnisse dürfen mit hinein, 
+aber die hier gezeigten müssen existieren und müssen genau so heissen (ohne die eckigen Klammern). Unterhalb von main/java und test/java kann eine beliebig tiefe Struktur von Packages und Java-Quelldateien sein. 
 
 Und wenn man das sklavisch genau befolgt hat, dann wird man damit belohnt, dass ein `mvn compile` von [Top] aus das Projekt ohne weiteres Zutun kompiliert. Dazu erstellt es eine weitere Ordnerhierarchie [target] parallel zu [src]. Dort hinein kommen alle Kompilate und alle Ressourcen (welche einfach unmodifiziert kopiert werden).
  
@@ -87,9 +108,8 @@ Moment: Allerdings klappt das alles nur, wenn die pom.xml korrekt ist. Für den 
         <version>0.8.0</version>
      </project>
 
-Verblüffend einfach, nicht wahr? Das ist der Zauber des 'convention over configuration'. Maven geht ohne andere Anweisungen einfach mal davon aus, dass das Projekt der Konvention entspricht und braucht dann keine weiteren Angaben. 
-
-Nur die ominösen Angaben, die Maven immer haben will, bedürfen der Erläuterung:
+Verblüffend einfach, nicht wahr? Das ist der Zauber des 'convention over configuration'. Maven geht ohne andere Anweisungen einfach mal davon aus, dass das Projekt der 
+Konvention entspricht und braucht dann keine weiteren Angaben ausser:
 
 * groupId: Das sollte ein möglichst eindeutiger Bezeichner sein. Zum Beispiel 'ch.webelexis'. Man darf aber auch etwas anderes wählen, zum Beispiel 'rgwch'.
 
