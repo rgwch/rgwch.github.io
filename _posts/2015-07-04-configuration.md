@@ -145,6 +145,16 @@ Hier legen wir einige Variablen fest, auf die wir später zugreifen können:
           <artifactId>vertx-core</artifactId>
           <version>${vertx-version}</version>
       </dependency>
+      <dependency>
+          <groupId>io.vertx</groupId>
+          <artifactId>vertx-web</artifactId>
+          <version>${vertx-version}</version>
+      </dependency>
+      <dependency>
+          <groupId>io.vertx</groupId>
+          <artifactId>vertx-mongo-client</artifactId>
+          <version>${vertx-version}</version>
+      </dependency>
     <dependencies>
     
 Wir haben eine Variable vertx.version definiert, damit wir bei Versionsänderungen nur eine einzige Stelle in der pom.xml 
