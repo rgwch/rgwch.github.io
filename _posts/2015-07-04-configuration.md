@@ -184,6 +184,6 @@ oder:
 Hier verwenden wir die property maven.build.timestamp.format, um im Manifest des erstellten jars ein
 Attribut "timestamp" im gewünschten Format zu erstellen.
 
-Die dritte oben gezeogte Property ist eine Maven Einstellung, die dazu führt, dass Maven den Quellcode systemunabhängig 
+Die dritte oben gezeigte Property ist eine Maven Einstellung, die dazu führt, dass Maven den Quellcode systemunabhängig 
 als UTF-8 intepretiert.
 Die vierte Property ist selbstdefiniert und erfüllt hier ausser "weil ich es kann" keinen speziellen Zweck.
