@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Maven: Konfiguration
+title: Maven - Konfiguration
 description: einige Punkte in Pom.xml
 category: Programmieren allgemein
 tags: [Maven, pom]
 ---
 
-[Teil 1](2015/07/Maven) [Teil 2](2015/07/pom) Teil 3 [Teil 4](2015/07/maven-plugin)
+[Teil 1](/2015/07/Maven) [Teil 2](/2015/07/pom) Teil 3 [Teil 4](/2015/07/maven-plugin)
 
 
 ### Convention over Configuration, but...
