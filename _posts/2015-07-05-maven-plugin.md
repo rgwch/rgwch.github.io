@@ -165,7 +165,7 @@ Der Aufruf unseres Plugins in der pom.xml von webelexis-server sieht so aus:
           <executions>
               <execution>
                   <id>1</id>
-                  <phase>process-resources</phase>
+                  <phase>prepare-package</phase>
                   <goals>
                       <goal>mimosa</goal></goals>
               </execution>
@@ -176,7 +176,7 @@ Der Aufruf unseres Plugins in der pom.xml von webelexis-server sieht so aus:
 Hier wird deklariert, welche Parameter das Plugin bekommt, nämlich das Basisverzeichnis des Client-Projekts, 
 dessen Ausgabeverzeichnis, sowie das endgültige Zielverzeichnis im Server-Projekt.
 Dann wird unter &lt;executions&gt; festgelegt, wann es ausgeführt wird, und welches Kommando ausgeführt wird:
-Wir möchten, dass in der Phase "process-resources" das Kommando "mimosa" unseres Plugins ausgeführt wird. Danach
+Wir möchten, dass in der Phase "prepare-package" das Kommando "mimosa" unseres Plugins ausgeführt wird. Danach
 soll der Inhalt des mimosa-Ausgabeverzeichnisses ins Unterverzeichnis "web" des server-Ausgabeverzeichnisses
 kopiert werden. 
 
@@ -231,11 +231,11 @@ Dann muss man mindestens zwei Dateien hochladen:
 Das zweite ist die pom.xml, die vor dem Hochladen so umbenannt werden muss.
 
 Nachdem wir für beide Dateien "publish" freigegeben haben, sind sie vom Internet aus erreichbar. Allerdings
-wird Maven sie nicht finden.
+wird Maven sie nicht finden. Wie sollte es auch? "irgendwo im Internet" ist keine ausreichend genaue Beschreibung.
 
 ### pom.xml anpassen
 
-Folgender Eintrag in pom.xml von webelexis-server löst dieses Problem:
+Folgender Eintrag in der pom.xml von webelexis-server löst dieses Problem:
 
     <pluginRepositories>
         <pluginRepository>
@@ -272,4 +272,15 @@ Jetzt kann jeder nodejs- und maven-Besitzer Webelexis sehr einfach selber bauen:
 Das ist alles. Das mimosa-maven-plugin wird im Rahmen von mvn package automatisch von bintray  heruntergeladen,
 installiert und ausgeführt.
 
+#### RTFM
     
+Ohne Dokumentation werden die Anwender unseres neuen Plugins viel zuviele Rückfragen stellen. Und am liebsten 
+wollen sie die Dokumentation so, wie sie sie gewohnt sind. Zum Beispiel in derselben Form, wie Libraries und Plugins
+in maven central dokumentiert sind.
+
+Nicht leichter als das.
+
+    mvn site 
+    
+erledigt das und erstellt ein Verzeichnins "site" in mimosa-maven-plugin/target, das man unverändert auf einen Webserver kopieren
+kann. Das Resultat sieht dann [so](http://www.webelexis.ch/sites/mimosa-maven-plugin) aus.
