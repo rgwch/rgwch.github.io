@@ -11,7 +11,7 @@ tags: [Maven, pom]
 
 ### Convention over Configuration, but...
 
-Wie wir in den letzten beiden Posts, [Einstieg](2015/07/Maven) und [Pom](2015/07/pom) gesehen haben, startet Maven
+Wie wir in den letzten beiden Posts, [Einstieg](/2015/07/Maven) und [Pom](/2015/07/pom) gesehen haben, startet Maven
  mit "vernünftigen" Annahmen, die dazu führen, dass ein einfaches Projekt, welches ein Layout hat, das den Maven-Konventionen
  entspricht, erfolgreich gebaut werden kann. Und zwar ohne irgendwelche zusätzlich Konfiguration, die über das simple
  Basis-Pom hinausgeht.
@@ -24,14 +24,14 @@ Ich zeige hier nur einige häufig benötigte Dinge.
 
 #### Dependencies
 
-Abhängigkeiten müssen in der Pom deklariert werden. Dies ist genauer im [letzten Post](2015/07/pom) beschrieben. Man kann
+Abhängigkeiten müssen in der Pom deklariert werden. Dies ist genauer im [letzten Post](/2015/07/pom) beschrieben. Man kann
 entweder manuell &lt;dependency&gt; tags einfügen, oder man überlässt seiner IDE das Management. Zumindest Idea hat ziemlich
-ausgedehnten [Maven Support](https://www.jetbrains.com/idea/help/maven.html).
+ausgedehnten [Maven Support](https://www.jetbrains.com/idea/help/resolving-references-with-maven.html).
 
 #### Plugins
 
 Fast alles, was Maven tut, tut es mit Plugins. Das heisst, es tut eigentlich nichts, als in jeder "lifecycle-phase" 
-die dazu passenden Plugins aufzurufen und zu Parametrisieren. Die Parameter entnimmt es der pom.xml. Dass man davon
+die dazu passenden Plugins aufzurufen und zu parametrisieren. Die Parameter entnimmt es der pom.xml. Dass man davon
 im Grundzustand nichts sieht, das liegt -wieder einmal- am "convention over configuration". Wann immer ein Plugin 
 in der pom.xml nicht konfiguriert wird, dann erhält es "vernünftige" Defaults.
 
@@ -131,8 +131,9 @@ Manchmal will man selber irgendwelche Eigenschaften definieren. Das Sammelbecken
 
     <properties>
         <vertx-version>3.0.0</vertx-version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>E, dd MM yyyy HH:mm:ss z</maven.build.timestamp.format>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <hallo>Grüezi</hallo>
     </properties>
 
 Hier legen wir einige Variablen fest, auf die wir später zugreifen können:
@@ -173,3 +174,6 @@ oder:
 Hier verwenden wir die property maven.build.timestamp.format, um im Manifest des erstellten jars ein
 Attribut "timestamp" im gewünschten Format zu erstellen.
 
+Die dritte oben gezeogte Property ist eine Maven Einstellung, die dazu führt, dass Maven den Quellcode systemunabhängig 
+als UTF-8 intepretiert.
+Die vierte Property ist selbstdefiniert und erfüllt hier ausser "weil ich es kann" keinen speziellen Zweck.
