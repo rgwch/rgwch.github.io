@@ -1,10 +1,13 @@
 ---
 layout: post
-title: Also doch: Konfiguration
-description: eine Punkte in Pom.xml
+title: Maven: Konfiguration
+description: einige Punkte in Pom.xml
 category: Programmieren allgemein
 tags: [Maven, pom]
 ---
+
+[Teil 1](2015/07/Maven) [Teil 2](2015/07/pom) Teil 3 [Teil 4](2015/07/maven-plugin)
+
 
 ### Convention over Configuration, but...
 
@@ -169,3 +172,4 @@ oder:
 
 Hier verwenden wir die property maven.build.timestamp.format, um im Manifest des erstellten jars ein
 Attribut "timestamp" im gewünschten Format zu erstellen.
+
