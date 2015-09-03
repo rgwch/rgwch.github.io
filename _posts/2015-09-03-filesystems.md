@@ -8,7 +8,7 @@ tags: [Server, admin, filesystem, Dateisystem, Harddisk]
 
 ## Geschwindigkeitsvergleich einiger externer Speichermethoden auf dem Server.
 
-Natürlich sind real-world-examples weniger reproduzierbar und somit weniger aussagekräftig, als standardisierte Screenshots.
+Natürlich sind real-world-examples weniger reproduzierbar und somit weniger aussagekräftig, als standardisierte Benchmarks.
 Daher der disclaimer: Diese Beispiel gelten nur für mein System und nur für den Zeitpunkt, zu dem sie ausgeführt wurden.
 
 * System: Fujitsu Primergy TX 150 S2  
