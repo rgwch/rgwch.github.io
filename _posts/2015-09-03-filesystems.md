@@ -21,20 +21,20 @@ Quellverzeichnis liegt auf einer internen SATA-Harddisk
 
 ### 1. Kopie auf eine zweite interne SATA Harddisk auf demselben Computer
 
-![Kopie auf SATA](../images/sata.png)
+![Kopie auf SATA]({{site.url}}/images/sata.png)
 
 ### 2. Kopie auf USB-Platten
 
 (Genauer gesagt: Ein ZFS virtual device, bestehend aus zwei gespiegelten 4-TB-Platten an USB-3-Ports) mit einem
 transparent komprimierenden Dateisystem (zfs set compression=lz4)
 
-![Kopie auf USB](../images/zfs.png)
+![Kopie auf USB](/images/zfs.png)
 
 ### 3. Kopie auf NAS
 
 (6 TB Buffalo LinkStation an Gigabyte-Lan)
 
-![Kopie auf NAS](../images/nas.png)
+![Kopie auf NAS](/images/nas.png)
 
 ## Fazit
 
