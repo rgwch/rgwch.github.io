@@ -60,6 +60,8 @@ Der Prozess der Druckerinstallation ist immerhin dank cups (**c**ommon **u**nix 
 
 installiert eine Reihe von Druckertreibern. Die Konfiguration erledigt man dann am besten entweder mit dem Drucker-Systemsteuerungs-Applet von Cinnamon, oder über die Webseite des CUPS-Servers: http://localhost:631
 
+Nach einigem Hin und Her gelang es mir damit, meine Drucker (Brother HL-4570CDW und Brother MFC 8510 übers Netz, Canon MG 5550 am USB-Port) anzusteuern. Nicht perfekt gelang dies mit dem Dymo LabelWriter 400/450: Dort gelingt es mir nicht, meine Etikettengrösse korrekt einzustellen - Work in progress.
+
 #### Scanner
 
 Die Scannerinstallation ist theoretisch sehr einfach geworden:
@@ -92,3 +94,10 @@ Et voilà: Jetzt findet scanimage -L den Scanner, und simple-scan kann damit auc
   Hier ist die Auswahl nicht besonders gross. Es gibt ein paar Projekte, die zum Beispiel bei [Ubuntu](https://wiki.ubuntuusers.de/DICOM/) gelistet sind. Wenn man konkret nachschaut, gibt es darunter aber Projekte, die aufgegeben zu sein scheinen (z.B. Aeskulap), oder die nur sehr rudimentäre Funktionen bereitstellen. Kurz: Ein ernsthafter Konkurrent für [Osirix](http://www.osirix-viewer.com/) (oder seine freie 64-Bit-Variante [OsiriLXIV](http://bettar.no-ip.org/lxiv/)) ist nicht dabei. Aber leider stehen die Osirix Varianten nicht zur Debatte, da nur für Mac.
 
   Ziemlich gut finde ich [Ginkgo-CADx](http://ginkgo-cadx.com/en/). Die Bedienung ist etwas gewöhnungsbedürftig, aber wenn man es erst mal raus hat, kann man damit eigentlich fast alles machen, was man auch mit OsiriX kann. Nur zum CD Brennen muss man externe Tools bemühen, und auf 3D-Animationen muss man verzichten. Dafür hat man ein paar Dinge, die man mit OsiriX nicht kann, zum Beispiel Bilder aller Art "dicomisieren".
+
+  #### Diverses
+
+  * Viele Mac-User sind an [Quicksilver](https://qsapp.com/) oder [Alfred](https://www.alfredapp.com/) gewöhnt und vermissen das auf Linux. Ein Klon mit praktisch identischer Funktionalität ist [Kupfer](http://engla.github.io/kupfer/), welches in arch mit `yaourt -S kupfer` installiert werden kann.
+
+  * Ein einfacher CD-Brenner ist Brasero -> `sudo pacman -S brasero`.
+  * Computer durchsuchen: Catfish `sudo pacman -S catfish`.
