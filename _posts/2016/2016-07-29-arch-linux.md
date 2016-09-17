@@ -50,6 +50,7 @@ Mir gefällt der Cinnamon-Desktop von Linux Mint. Natürlich kann man den auch i
 
 Also: `sudo pacman -S gdm cinnamon`
 
+Achtung: Das System bootet trotzdem zunächst in den Textmodus. Um den Desktop zu starten, muss man `sudo systemctl start gdm` eingeben, oder, wenn man beim Systemstart auotmatisch in den Grafikmodus kommen will, `sudo systemctl enable gdm`. So oder so muss man beim ersten Start, bevor man das Login-Passwort eingibt, auf das Zahnrad unter dem Namen klicken, und das gewünschte Fenstersystem, auswählen. Sonst landet man in einer eher langweiligen Stanmdardoberfläche.
 
 #### Drucker
 
@@ -60,7 +61,7 @@ Der Prozess der Druckerinstallation ist immerhin dank cups (**c**ommon **u**nix 
 
 installiert eine Reihe von Druckertreibern. Die Konfiguration erledigt man dann am besten entweder mit dem Drucker-Systemsteuerungs-Applet von Cinnamon, oder über die Webseite des CUPS-Servers: http://localhost:631
 
-Nach einigem Hin und Her gelang es mir damit, meine Drucker (Brother HL-4570CDW und Brother MFC 8510 übers Netz, Canon MG 5550 am USB-Port) anzusteuern. Nicht perfekt gelang dies mit dem Dymo LabelWriter 400/450: Dort gelingt es mir nicht, meine Etikettengrösse korrekt einzustellen - Work in progress.
+Nach einigem Hin und Her gelang es mir damit, meine Drucker (Brother HL-4570CDW und Brother MFC 8510 übers Netz, Canon MG 5550 am USB-Port) anzusteuern. Bei manchen Druckern, bei mir etwa dem Dymo LabelWriter 400/450 kann man Linux Treiber direkt beim Hersteller downloaden. Die funktionieren gerade bei Spezialdruckern im allgemeinen besser, als die Standard-Treiber von Gutenprint.
 
 #### Scanner
 
