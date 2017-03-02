@@ -25,6 +25,11 @@ Wie es dann weiter gehen kann, kann man ebenfalls bei [Arch Linux](https://wiki.
 
 Aber zunächst muss auch noch das Package-System anegkegt werden. Arch hat einen Package Manager namens "pacman", der die Aufgaben erledigt, die man in debian-Derivaten gerne aptitude oder apt-get anvertraut. Das Standardkommando ist synchronize: `pacman -S <paketname>`. Um das ganze System auf den neuesten Stand zu bringen. schreibt man `pacman -Syu`.
 
+pacman -S base-devel jdk8-openjdk maven git gdm cinnamon xfce4-terminal mc rsync
+
+Um das Netzwerk automatisch beim Start zu aktivieren und eine Adresse vom DHCP Server zu beziehen, `systemctl enable dhcpcd.service`.
+
+
 Auch eine Klickibunti-Oberfläche muss man selber anlegen, denn der Arch Installationsprozess führt zunächst nur mal nur zu einem reinen Textsystem. Das hat wiederum den Vorteil (oder ist es ein Nachteil?) der grossen Auswahl:
 
 Praktisch alle Fenstersysteme gibt es auch für Arch. Sie können also frei entscheiden, ob Sie etwa Gnome oder KDE oder Lxde oder Mate oder was auch immer haben möchten. Aber Sie müssen es selber zusammenstöpseln. Daher im Folgenden eine sehr subjektive Zusammenstellung.
@@ -50,6 +55,7 @@ Mir gefällt der Cinnamon-Desktop von Linux Mint. Natürlich kann man den auch i
 
 Also: `sudo pacman -S gdm cinnamon`
 
+Das ist dann allerdings noch ziemlich unbrauchbar, hat nicht einmal ein Terminal und keinen Browser.
 
 #### Drucker
 
