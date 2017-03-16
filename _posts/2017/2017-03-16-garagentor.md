@@ -6,9 +6,9 @@ category: Haus Automation
 tags: [Wohnen,Fernbedienung,Raspberry,Javascript,NodeJS]
 ---
 
-Eine defekte Garagentor-Fernbedienung gab den Ausschlag: Da unser Torantrieb schon das Methusalem-Alter von 15 Jahren hat, war ein Ersatzteil natürlich nicht mehr zu bekommen. Es gab nur noch Universalfernbedienungen für um die 100.-. Da kommt man ins Grübeln. Der Materialwert einer solchen Fernbedieung dürfte unter 10.- sein.
+Eine defekte Garagentor-Fernbedienung gab den Ausschlag: Da unser Torantrieb schon das biblische-Alter von 15 Jahren hat, war ein Ersatzteil natürlich nicht mehr zu bekommen. Es gab nur noch Universalfernbedienungen für um die 100.-. Da kommt man ins Grübeln. Der Materialwert einer solchen Fernbedieung dürfte unter 10.- sein.
 
-Aiusserdem gibt es noch ein zweites, davon unabhängiges Problem: Wir haben nie genug Schlüssel, und die Jungs vergessen ihren manchmal, wenn sie weg gehen. Aber was wir alle immer dabei haben, ist das Smartphone. Nun denn, die Idee, das Garagentor mit dem Smartphone zu öffnen ist, zugegeben, nicht ganz neu, aber es geht viel billiger und einfacher, als gedacht:
+Ausserdem gibt es noch ein zweites, davon unabhängiges Problem: Wir haben nie genug Schlüssel, und die Jungs vergessen ihren manchmal, wenn sie weg gehen. Aber was wir alle immer dabei haben, ist das Smartphone. Nun denn, die Idee, das Garagentor mit dem Smartphone zu öffnen ist, zugegeben, nicht ganz neu, aber es geht viel billiger und einfacher, als gedacht:
 
 Innen hat der Torantrieb einen Taster, der einfach einen Kontakt schliesst und den Torantrieb so einschaltet. Mit diesem Taster kann man das Tor von Hand bedienen, wenn man sich in der Garage befindet. Das Tor fährt bei jedem Druck auf den Taster abwechselnd runter oder hoch, bzw. bleibt stehen, wenn es gerade am Fahren ist.
 
@@ -25,7 +25,20 @@ Da ich eher ein Software-Mensch bin, mache ich mich zuerst an den Server:
 
  * Einen Raspi aus dem keller holen, es ist ein B+. Zwar langsamer, als die aktuellen 2er und 3er Versionen, aber für unsere Zwecke sollte es genügen.
  * NOOBS herunterladen und auf die SD-Karte aufspielen, für silentinstall konfigurieren, da ich keine Lust habe, den Raspi an Tastatur Bildschirm anzuschliessen.
- * NodeJS und NPM installieren (was weniger einfach ist, als gedacht, weil die neuren Node-Versionen auf den alten Raspi-Modellen nicht laufen, also nahm ich die alte Node-Version, die in Raspbian integriert ist)
+ * per ssh mit dem Raspi verbinden, und das Passwort ändern. Dafür sorgen, dass er beim Start nicht in den grafischen Modus hochfährt, um nicht noch mehr von der spärlichen Leistung zu verbraten.
+ * NodeJS und NPM installieren (was weniger einfach ist, als gedacht, weil die in Raspbian mitgelieferte NodeJS-Version hoffnungslos veraltet ist.
+
+Einschub: NodeJS auf einem Raspi mit ARM6 installieren:
+
+      sudo apt-get remove nodejs
+      cd
+      mkdir apps
+      cd apps
+      wget https://nodejs.org/dist/v7.7.3/node-v7.7.3-linux-armv6l.tar.xz
+      tar -xf node-v7.7.3-linux-armv6l.tar.xz
+      mv node-v7.7.3-linux-armv6l node7
+      sudo ln -s /home/pi/apps/node7/bin/node /usr/bin/node
+      sudo ln -s /home/pi/apps/node7/bin/npm /usr/bin/npm
 
  * Ein Projekt aufsetzen:
 
@@ -34,7 +47,8 @@ Im Terminal:
       mkdir garage
       cd garage
       npm init
-      npm install express nconf crypto-js
+      npm install
+      npm install --save express nconf crypto-js
 
 
  Dann kann man einen trivialen REST-Server erstellen:
@@ -92,7 +106,7 @@ Für den Hardware-Teil muss man wissen:
 
 Die GPIOs des Raspberry bringen grade mal 3.3 Volt mit äusserst spärlichen Milliampères auf die Beine. Wenn man da herzlos ein handelsübliches Relais anschliesst, brennt der raspi glatt durch. Oder das Relais reagiert nicht. Oder was auch immer (ich bin ja kein Elektroniker). Jedenfalls wird es nicht klappen.
 
-Man braucht also eine Steuerelektronik. Hinter diesem hochtraben Namen verbirgt sich ein Transistor, eine Diode und ein Widerstand. Für jemandem mit zwei linken Händen wie mich kann das schon limitierend sein. Aber viel kann ja nicht passieren. Schlimmstenfalls verbrennt man beim Löten den Transistor oder die Finger. Natürlich kann man auch fertige Relaismodule für den Raspberry kaufen, aber wir sind ja keine Warmduscher.
+Man braucht also eine Steuerelektronik. Hinter diesem hochtrabenden Namen verbirgt sich ein Transistor, eine Diode und ein Widerstand. Für jemandem mit zwei linken Händen wie mich kann das schon limitierend sein. Aber viel kann ja nicht passieren. Schlimmstenfalls verbrennt man beim Löten den Transistor oder die Finger. Natürlich kann man auch fertige Relaismodule für den Raspberry kaufen, aber wir sind ja keine Warmduscher.
 
 [Hier](https://asciich.ch/wordpress/raspberry-pi-relais-ansteuern/) kann man zum Beispiel nachlesen, wie man so etwas aufbaut.
 
@@ -110,7 +124,7 @@ Und ändern dann den Erfolg-Teil des garage-Endpoints wie folgt:
 
     if(valid && valid == password){
       console.log("Das Garagentor tut etwas!")
-      rpio.write(12,rpio:HIGH)
+      rpio.write(12,rpio.HIGH)
       rpio.sleep(1)
       rpio.write(12,rpio.LOW)
       response.send("Auftrag ausgeführt, "+request.params['user'])
