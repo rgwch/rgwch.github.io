@@ -29,6 +29,7 @@ Da ich eher ein Software-Mensch bin, mache ich mich zuerst an den Server:
 
  * Ein Projekt aufsetzen:
 
+Im Terminal:
 
       mkdir garage
       cd garage
