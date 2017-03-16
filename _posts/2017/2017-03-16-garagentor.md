@@ -24,9 +24,10 @@ Da das WLAN mit WPA2 gesichert ist, und da der REST-Server nur vom WLAN aus erre
 Da ich eher ein Software-Mensch bin, mache ich mich zuerst an den Server:
 
  * Einen Raspi aus dem keller holen, es ist ein B+. Zwar langsamer, als die aktuellen 2er und 3er Versionen, aber für unsere Zwecke sollte es genügen.
- * NOOBS herunterladen und auf die SD-Karte aufspielen, für silentinstall konfigurieren, da ich keine Lust habe, den Raspi an Tastatur Bildschirm anzuschliessen.
+ * NOOBS herunterladen und auf die SD-Karte aufspielen, für silentinstall konfigurieren, da ich keine Lust habe, den Raspi an Tastatur und Bildschirm anzuschliessen.
  * per ssh mit dem Raspi verbinden, und das Passwort ändern. Dafür sorgen, dass er beim Start nicht in den grafischen Modus hochfährt, um nicht noch mehr von der spärlichen Leistung zu verbraten.
- * NodeJS und NPM installieren (was weniger einfach ist, als gedacht, weil die in Raspbian mitgelieferte NodeJS-Version hoffnungslos veraltet ist.
+ * Wlan-Stick anstecken und konfigurieren.
+ * NodeJS und NPM installieren (was weniger einfach ist, als gedacht, weil die in Raspbian mitgelieferte NodeJS-Version hoffnungslos veraltet ist.)
 
 Einschub: NodeJS auf einem Raspi mit ARM6 installieren:
 
@@ -76,7 +77,7 @@ Im Terminal:
       console.log("Garagenserver läuft an port 3000")
     })
 
-Mit `node garage.js` kann man das Ding starten. Dann können wir mit `http://raspi:3000/garage/hans/peter` zugreifen und erhalten immer "Wer bist denn Du???" zurück, da ja noch kein User 'hans' mit Paswort 'peter' bekannt ist.
+Mit `node garage.js` kann man das Ding starten. Dann können wir mit `http://raspi:3000/garage/hans/peter` zugreifen und erhalten immer "Wer bist denn du???" zurück, da ja noch kein User 'hans' mit Paswort 'peter' bekannt ist.
 
 Das wollen wir nun ändern:
 
