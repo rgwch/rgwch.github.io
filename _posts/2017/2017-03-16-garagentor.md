@@ -58,12 +58,14 @@ Im Terminal:
     var express=require('express')
     var nconf=require('nconf')
     var hash=require('crypto-js/sha256')
-    nconf.env().argv().file('users.json')
+    nconf.file('users.json')
+    var salt="um Hackern mit 'rainbow tables' die Suppe zu versalzen"
+
     var app=express()
 
     app.get("/garage/:user/:password",function(request,response){
-      var user=JSON.stringify(hash(request.params['user']))
-      var password=JSON.stringify(hash(request.params['password']))
+      var user=JSON.stringify(hash(request.params['user']+salt))
+      var password=JSON.stringify(hash(request.params['password']+salt))
       var valid=nconf.get(user)
       if(valid && valid == password){
         console.log("Die Garage öffnet sich!")
@@ -85,8 +87,8 @@ Damit keine Usernamen und Passwörter im Klartext in users.json stehen, werden s
 Allerdings ist es dann nicht ganz einfach, sie in die Konfiguration zu kriegen. Da dies ein kleines Projekt mit einer absehbaren Zahl von Usern ist, machen wir uns das sehr einfach: Es gibt einen zweiten REST-Endpoint zum Eintragen von Usern, den wir vor der app.listen()-Zeile einfügen:
 
     app.get("/adduser/:username/:password",function(req,resp){
-      var user=JSON.stringify(hash(req.params['username']))
-      var password=JSON.stringify(hash(req.params['password']))
+      var user=JSON.stringify(hash(req.params['username']+salt))
+      var password=JSON.stringify(hash(req.params['password']+salt))
         nconf.set(user,password)
         nconf.save()
         resp.send("Ok")
@@ -133,4 +135,6 @@ Und ändern dann den Erfolg-Teil des garage-Endpoints wie folgt:
 
 Also: Wir "drücken den Knopf" eine Sekunde lang und lassen ihn dann wieder los. Wenn das Garagentor sich zuletzt geöffnet hat, dann schliesst es sich jetzt, wenn es sich gerade bewegt, dann bleibt es stehen, und wenn es sich zuletzt geschlossen hatte, dann geht es jetzt auf.
 
-Ziemlich einfach, nicht wahr?
+Ziemlich einfach, nicht wahr? Und die Kosten? Ein Raspberry Pi B+ kostet um die [35.-](https://www.pi-shop.ch/raspberry-pi), Gehäuse 15.-, Netzteil 15.-, das Relais 5.- und die restlichen Bauteile sind im Rappenbereich. Aber natürlich darf man die Zeit nicht als Arbeitszeit nicht rechnen :)
+
+Natürlich kann und sollte man am Programm, speziell am UI, noch einiges verfeinern, aber das sei als Übung der interessierten Leserschaft überlassen :)
