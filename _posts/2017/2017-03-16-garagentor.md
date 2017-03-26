@@ -29,7 +29,7 @@ Da ich eher ein Software-Mensch bin, mache ich mich zuerst an den Server:
  * Wlan-Stick anstecken und konfigurieren.
  * NodeJS und NPM installieren (was weniger einfach ist, als gedacht, weil die in Raspbian mitgelieferte NodeJS-Version hoffnungslos veraltet ist.)
 
-Einschub: NodeJS auf einem Raspi mit ARM6 installieren:
+Einschub: NodeJS Version 7.x auf einem Raspberry Pi mit ARM6 installieren:
 
       sudo apt-get remove nodejs
       cd
@@ -40,6 +40,7 @@ Einschub: NodeJS auf einem Raspi mit ARM6 installieren:
       mv node-v7.7.3-linux-armv6l node7
       sudo ln -s /home/pi/apps/node7/bin/node /usr/bin/node
       sudo ln -s /home/pi/apps/node7/bin/npm /usr/bin/npm
+      echo export PATH=$PATH:/home/pi/apps/node7/bin >>../.profile
 
  * Ein Projekt aufsetzen:
 
