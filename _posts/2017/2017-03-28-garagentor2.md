@@ -244,7 +244,8 @@ Es könnte immer noch sein, dass ein raffinierter Hacker einen Weg findet, an de
     }
 
     /**
-     * Zugriffstest; wird vor alle https://server:2017/garage/... Anfragen POST requessts geschaltet
+     * Zugriffstest;
+     * wird vor alle https://server:2017/garage/... Anfragen POST requessts geschaltet
      * Wenn ein user gesperrt ist, dann prüfe, ob die Sperre abgelaufen ist. Wenn nein, abweisen
      * Sonst:
      * Wenn das Passwort korrekt ist, allfällige Sperren löschen
@@ -271,7 +272,8 @@ Es könnte immer noch sein, dass ein raffinierter Hacker einen Weg findet, an de
     })
 
     /**
-     * Zugriffstest für Admin-Funktionen. Wird vor alle https://server:2017/adm/... GET requests geschaltet.
+     * Zugriffstest für Admin-Funktionen.
+     * Wird vor alle https://server:2017/adm/... GET requests geschaltet.
      * Gemeinsame Syntax: /adm/masterpassword/funktion/parameter.
      * Bei falschem Masterpasswort: Sperre setzen bzw. verlängern.
      */
@@ -333,8 +335,7 @@ Es könnte immer noch sein, dass ein raffinierter Hacker einen Weg findet, an de
     })
 
     /**
-     * Einen neuen User eintragen. Als letzter Parameter muss das Master-Passwort angegeben werden.
-     * Wenn bisher noch kein Master-Passwort existiert, wird es eingetragen.
+     * Einen neuen User eintragen.
      */
     app.get("/adm/:master/add/:username/:password", function (req, resp) {
       var user = req.params.username.toLocaleLowerCase()
@@ -348,8 +349,7 @@ Es könnte immer noch sein, dass ein raffinierter Hacker einen Weg findet, an de
     })
 
     /**
-     * Einen User löschen. Als letzter Parameter muss das Master-Passwort angegeben werden.
-     * Wenn bisher noch kein Master-Passwort existiert, wird es eingetragen..
+     * Einen User löschen.
      */
     app.get("/adm/:master/remove/:username", function (req, resp) {
       nconf.set(req.params.username, undefined)
@@ -360,8 +360,7 @@ Es könnte immer noch sein, dass ein raffinierter Hacker einen Weg findet, an de
     })
 
     /**
-     * Server inaktiv schalten. Als Parameter muss das Master-Passwort angegeben werden.
-     * Wenn bisher noch kein Master-Passwort existiert, wird es eingetragen.
+     * Server inaktiv schalten.
      */
     app.get("/adm/:master/disable", function (req, resp) {
       disabled = true
@@ -371,8 +370,7 @@ Es könnte immer noch sein, dass ein raffinierter Hacker einen Weg findet, an de
     })
 
     /**
-     * Server aktiv schalten.  Als Parameter muss das Master-Passwort angegeben werden.
-     * Wenn bisher noch kein Master-Passwort existiert, wird es eingetragen.
+     * Server aktiv schalten.
      */
     app.get("/adm/:master/enable", function (req, resp) {
       disabled = false
@@ -418,7 +416,10 @@ In diesem Beispiel sind alle Views in der Beschreibungssprache "pug" verfasst, d
 
 ### layout.pug
 
-Das ist der gemeinsame Rahmen um alle Views. Die jeweils spezifische View wird bei "content" eingesetzt.
+Das ist der gemeinsame Rahmen um alle Views. Die jeweils spezifische View wird bei "content" eingesetzt. Hier wird das "Materialize"-
+Styling geladen und festgelegt, dass die Seite auf kleinen Bildschirmen vergrössert dargestellt werden soll. Ausserdem deklarieren wir, 
+wo sich die Icons für iOS (apple-touch-icon) un Android (manifest.json) befinden, falls der User eine Verknüpfung auf
+dem Handy-Desktop anlegen will.
 
     doctype html
     html
