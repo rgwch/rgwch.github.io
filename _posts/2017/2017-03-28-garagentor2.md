@@ -102,7 +102,6 @@ Es könnte immer noch sein, dass ein raffinierter Hacker einen Weg findet, an de
 ### Listings
 
 ```JavaScript
-
 /**
  *  Garagentor-Fernbedienung mit Raspberry Pi
  */
@@ -415,7 +414,6 @@ app.get("/adm/:master/log",function(req,resp){
     }
   })
 })
-
 ```
 
 ## Die Views
@@ -431,7 +429,6 @@ wo sich die Icons für iOS (apple-touch-icon) un Android (manifest.json) befinde
 dem Handy-Desktop anlegen will.
 
 ```pug
-
 doctype html
 html
   head
@@ -451,7 +448,6 @@ html
 Das ist die Einstiegsseite, die auf den Aufruf von "/" gezeigt wird.
 
 ```pug
-
 extends layout.pug
 block content
   .container
@@ -470,7 +466,6 @@ block content
 
             button.btn.waves-effect.waves-light.col.s12(type="submit" name="action") Senden
               i.material-icons.right send
-
 ```
 
 ### answer.pug
@@ -479,7 +474,6 @@ Mit dieser Seite gibt der Server seine Antworten zurück. In der Variablen "mess
 
 
 ```pug
-
 extends layout.pug
 block content
   .container
@@ -487,7 +481,6 @@ block content
       p.col.s12(style="font-size:large") Die Garage sagt: !{message}
       a.col.s3.btn.waves-effect.waves-light(href="/") Zurück
       a.col.s3.offset-s1.btn.waves-effect.waves-light(href="http://www.google.ch") Irgendwo anders hin
-
 ```
 
 ### confirm.pug
@@ -495,7 +488,6 @@ block content
 Hier wird dem user nach erfolgtem Login die Möglichkeit gegeben, das Tor zu öffnen oder zu schliessen. In der Variable "Status" steht, ob die garage derzeit offen oder zu ist, in "action" steht, was der User jetzt tun kann (schliessen oder öffnen).
 
 ``` pug
-
 extends layout.pug
 block content
   .container
@@ -508,5 +500,4 @@ block content
         input(type="hidden" name="action" value=action)
         button.col.s3.btn.waves-effect.waves-light(type="submit" name="action") #{action}
         a.col.s3.offset-s1.btn.waves-effect.waves-li
-
 ```
