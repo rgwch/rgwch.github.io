@@ -101,7 +101,7 @@ Es könnte immer noch sein, dass ein raffinierter Hacker einen Weg findet, an de
 
 ### Listings
 
-```JavaScript
+```javascript
 /**
  *  Garagentor-Fernbedienung mit Raspberry Pi
  */
@@ -447,7 +447,7 @@ html
 
 Das ist die Einstiegsseite, die auf den Aufruf von "/" gezeigt wird.
 
-```pug
+```jade
 extends layout.pug
 block content
   .container
@@ -473,7 +473,7 @@ block content
 Mit dieser Seite gibt der Server seine Antworten zurück. In der Variablen "message" befindet sich der Text der Antwort.
 
 
-```pug
+```jade
 extends layout.pug
 block content
   .container
@@ -487,7 +487,7 @@ block content
 
 Hier wird dem user nach erfolgtem Login die Möglichkeit gegeben, das Tor zu öffnen oder zu schliessen. In der Variable "Status" steht, ob die garage derzeit offen oder zu ist, in "action" steht, was der User jetzt tun kann (schliessen oder öffnen).
 
-``` pug
+```jade
 extends layout.pug
 block content
   .container
