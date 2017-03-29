@@ -93,8 +93,15 @@ Hier geht es nicht einmal so sehr um den Einbrecher, der durch die garage ins Ha
 
 Es könnte immer noch sein, dass ein raffinierter Hacker einen Weg findet, an den wir nicht gedacht haben. Also muss der Server alles, was er tut in ein Logfile schreiben. Wenn man das ab und zu durchsieht, kann man verdächtige Aktionen bemerken.
 
-## Das Programme
+## Das Programm
 
+### Vorbereitung
+
+
+
+### Listings
+
+```Javascript
     /**
      *  Garagentor-Fernbedienung mit Raspberry Pi
      */
@@ -407,7 +414,7 @@ Es könnte immer noch sein, dass ein raffinierter Hacker einen Weg findet, an de
         }
       })
     })
-
+```
 
 ## Die Views
 
@@ -417,59 +424,69 @@ In diesem Beispiel sind alle Views in der Beschreibungssprache "pug" verfasst, d
 ### layout.pug
 
 Das ist der gemeinsame Rahmen um alle Views. Die jeweils spezifische View wird bei "content" eingesetzt. Hier wird das "Materialize"-
-Styling geladen und festgelegt, dass die Seite auf kleinen Bildschirmen vergrössert dargestellt werden soll. Ausserdem deklarieren wir, 
+Styling geladen und festgelegt, dass die Seite auf kleinen Bildschirmen vergrössert dargestellt werden soll. Ausserdem deklarieren wir,
 wo sich die Icons für iOS (apple-touch-icon) un Android (manifest.json) befinden, falls der User eine Verknüpfung auf
 dem Handy-Desktop anlegen will.
 
-    doctype html
-    html
-      head
-        title= "Unsere Garage"
-        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css")
-        link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
-        meta(content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2, user-scalable=0" name="viewport")
-        link(rel="apple-touch-icon" href="/garage-57x57.png")
-        link(rel="manifest" href="/manifest.json")
-      body
-        block content
-        script(src="simple.js")
+```pug
+
+doctype html
+html
+  head
+    title= "Unsere Garage"
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css")
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    meta(content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2, user-scalable=0" name="viewport")
+    link(rel="apple-touch-icon" href="/garage-57x57.png")
+    link(rel="manifest" href="/manifest.json")
+  body
+    block content
+    script(src="simple.js")
+```
 
 ### garage.pug
 
 Das ist die Einstiegsseite, die auf den Aufruf von "/" gezeigt wird.
 
-    extends layout.pug
-    block content
-      .container
-        .row
-          h1.col.s12 Garage
-          form.col.s12(method="post" action="/garage/login")
-            .row
-              .col.s12
-                .input-field.col.s12
-                  i.material-icons.prefix account_circle
-                  input(type="text" name="username" placeholder="Username" id="uname")
-                .input-field.col.s8
-                  i.material-icons.prefix vpn_key
-                  input(type="password" name="password" placeholder="Passwort" id="pwd")
-                .btn.btn-flat.col.s4(onClick="enterPwd()") ändern...
+```pug
 
-                button.btn.waves-effect.waves-light.col.s12(type="submit" name="action") Senden
-                  i.material-icons.right send
+extends layout.pug
+block content
+  .container
+    .row
+      h1.col.s12 Garage
+      form.col.s12(method="post" action="/garage/login")
+        .row
+          .col.s12
+            .input-field.col.s12
+              i.material-icons.prefix account_circle
+              input(type="text" name="username" placeholder="Username" id="uname")
+            .input-field.col.s8
+              i.material-icons.prefix vpn_key
+              input(type="password" name="password" placeholder="Passwort" id="pwd")
+            .btn.btn-flat.col.s4(onClick="enterPwd()") ändern...
+
+            button.btn.waves-effect.waves-light.col.s12(type="submit" name="action") Senden
+              i.material-icons.right send
+
+```
 
 ### answer.pug
 
 Mit dieser Seite gibt der Server seine Antworten zurück. In der Variablen "message" befindet sich der Text der Antwort.
 
-    extends layout.pug
-    block content
-      .container
-        .row
-          p.col.s12(style="font-size:large") Die Garage sagt: !{message}
-          a.col.s3.btn.waves-effect.waves-light(href="/") Zurück
-          a.col.s3.offset-s1.btn.waves-effect.waves-light(href="http://www.google.ch") Irgendwo anders hin
 
+```pug
 
+extends layout.pug
+block content
+  .container
+    .row
+      p.col.s12(style="font-size:large") Die Garage sagt: !{message}
+      a.col.s3.btn.waves-effect.waves-light(href="/") Zurück
+      a.col.s3.offset-s1.btn.waves-effect.waves-light(href="http://www.google.ch") Irgendwo anders hin
+
+```
 
 ### confirm.pug
 

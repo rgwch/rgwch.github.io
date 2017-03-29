@@ -5,6 +5,7 @@ description: Wie man das Garagentor mit dem Handy öffnet
 category: Haus Automation
 tags: [Wohnen,Fernbedienung,Raspberry,Javascript,NodeJS]
 ---
+Zur [zweiten Version](/2017/03/garagentor2)
 
 Eine defekte Garagentor-Fernbedienung gab den Ausschlag: Da unser Torantrieb schon das biblische-Alter von 15 Jahren hat, war ein Ersatzteil natürlich nicht mehr zu bekommen. Es gab nur noch Universalfernbedienungen für um die 100.-. Da kommt man ins Grübeln. Der Materialwert einer solchen Fernbedieung dürfte unter 10.- sein.
 
