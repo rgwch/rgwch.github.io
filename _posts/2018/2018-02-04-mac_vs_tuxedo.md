@@ -7,7 +7,7 @@ tags: [Laptop,Mac,Linux,Tuxedo]
 ---
 In diesem Post vergleiche ich zwei Computer, die man eigentlich nicht vergleichen kann: Ein 2013er MacBook pro 15 '' Retina Display und ein 2018er [Tuxedo](https://www.tuxedocomputers.com/de/TUXEDO-Book-BU1407-14-matt-Full-HD-IPS-bis-Intel-Core-i7-Energiespar-CPU-zwei-HDD/SSD-bis-32GB-RAM-bis-10h-Akku-Slim-Book-LTE-opt.tuxedo) Notebook mit 14'' Bildschitm und Ubuntu Linux 16.04.
 
-Anlass dieses Vergleichs war, dass mein auch unterwegs vielgenutztes MacBook sich immer öfter unvermittelt ausschaltete, wenn es etwas mehr Leistung erbringen musste, auch wenn die Akkuanzeige noch bei 60% oder mehr stand. Als Ursache kristallisierte sich schon bald der fast 5 Jahre alte Akku mit fast tausend Ladezyklen heraus. Er hatte offensichtlich nicht nur an Kapazität verloren, sondern er schaffte es auch nicht mehr, dem Betriebssystem rechtzeitig mitzuteilen, dass sein Saft dem Ende zuging.
+Anlass dieses Vergleichs war, dass mein auch unterwegs vielgenutztes MacBook sich immer öfter unvermittelt ausschaltete, wenn es etwas mehr Leistung erbringen musste, auch wenn die Akkuanzeige noch bei 60% oder mehr stand. Als Ursache kristallisierte sich schon bald der fast 5 Jahre alte Akku mit fast tausend Ladezyklen heraus. Er hatte offensichtlich nicht nur an Kapazität verloren, sondern er schaffte es auch nicht mehr, dem Betriebssystem rechtzeitig mitzuteilen, wenn sein Saft dem Ende zuging.
 
 Wer Apple kennt, der weiss: Selbermachen ist schwierig. Mit meinen zwei linken Händen wollte ich diesem teuren Teil nicht an die Eingeweide, Also fragte ich den freundlichen Apple Reseller, der einen Kostenvoranschlag von 300.- machte und eine Reparaturzeit von 3 Tagen in Aussicht stellte.
 Nun bin ich, was Computerfirmen betrifft, ein etwas gebranntes Kind und wusste, dass drei Tage sich in dieser Branche oft als drei Wochen oder mehr entpuppen können, und da ich den Laptop oft benötige, musste ein Ersatz für die Reparaturzeit her.
@@ -25,7 +25,7 @@ Zeit für einen Vergleich. Vorauszuschicken ist, dass das MacBook 2013 stolze 27
 
 Die Eleganz und Verarbeitungsqualität des MacBook sind legendär. Aber das Tuxedo macht gar keine schlechte Figur daneben. Es ist ebenfalls sehr schlank und schick geformt. Dass es aus Plastik ist, bewirkt gegenüber dem Aluminium-Macbook natürlich eine weniger edle Anmutung, dafür ist es leichter. Die Verarbeitungsqualität erhält das Prädikat "brauchbar". Manche Teile stehen fühlbar ein wenig über. Die Tastatur ist angenehm gross, aber im Gegensatz zu der des Mac nicht beleuchtet. Kleiner Minuspunkt bei schlechten Lichtverhältnissen.
 
-Ich würde sagen: Äusseres: 10:8 für das Macbook.
+Ich würde sagen: Äusseres: 10:6 für das Macbook.
 
 ## Schauen, Hören und Fühlen
 
@@ -69,11 +69,11 @@ Ein Blick auf die Website zeigt: Bei Tuxedo kann man sich den Laptop bis ins let
 
 ## Wartbarkeit und Erweiterbarkeit
 
-Das Macbook musste ich für einen Akkuwechsel zum Händler bringen. Bei Tuxedo ist das Wechseln des Akku eine Sache von zwei Schiebern und einmal Einrasten. Ein Ersatzakku kostet bei Tuxedo weniger als ein Drittel der Reparatur des Mac. Natürlich weiss ich nicht, ob es diesen Akku noch zu kaufen gibt, wenn ich ihn mal brauche. Diese Langzeit-Sicherheit ist bei Apple sicher grösser. 
+Das Macbook musste ich für einen Akkuwechsel zum Händler bringen. Bei Tuxedo ist das Wechseln des Akku eine Sache von zwei Schiebern und einmal Einrasten. Ein Ersatzakku kostet bei Tuxedo weniger als ein Viertel der Reparatur des Mac. Natürlich weiss ich nicht, ob es diesen Akku noch zu kaufen gibt, wenn ich ihn mal brauche. Diese Langzeit-Sicherheit ist bei Apple sicher grösser. 
 
 Auch sonst ist der Tuxedo weit offen: Man kann Laufwerke und Speicher problemlos selbst austauschen bzw. erweitern, und man kann für alles günstige Standardteile verwenden.
 
-0:10 für Tuxedo.
+3:10 für Tuxedo.
 
 ## Systemintegration und Betriebssystem
 
@@ -90,3 +90,7 @@ Zusammengefasst schenken sich die Kontrahenten hier nichts, auch wenn ihre Stär
 # Fazit
 
 Wenn man einfach nur die Punkte zusammenzählt, liegt Tuxedo nun sogar vorne. Das hat es allerdings vor allem seiner leichten Reparierbarkeit zu verdanken. Und natürlich wird man nie alle Bereiche gleich werten. 
+
+# Und noch ein PS
+
+Meine Befürchtung wegen der Reparaturzeit hat sich übrigens nicht bewahrheitet. Nach knapp einer Woche konnte ich das Macbook wieder abholen, und der Kostenvoranschlag war eingehalten. 
