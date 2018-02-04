@@ -46,7 +46,9 @@ www.dyndns.com ist der Pionier solcher Services, aber es gibt auch etliche Ander
 
 Dafür gibt es fixfertige Lösungen:
 
-    sudo apt-get install ddclient
+```
+sudo apt-get install ddclient
+```
 
 Den ddclient muss man für dne gewählten DynDNS-Diens konfigurieren, dann wird er fortan immer die aktuelle IP-Adresse an den Dienst melden-
 
@@ -60,16 +62,20 @@ Das dafür nötige Vorgehen ist bei jedem Router anders. Das entsprechende Menü
 
 Dies geschieht, indem man das https:// anstatt dem http:// Protokoll verwendet. Dies muss auf dem Server eingerichtet werden. Bisher hatten wir:
 
+```javascript
     app.listen(2017,function(){
       console.log("Garagenserver läuft an port 2017")
     })
+````
 
 Was einen HTTP-Server erstellt. Neu schreiben wir nun:
 
+```js
     https.createServer({
       key: fs.readFileSync('key.pem'),
       cert: fs.readFileSync('cert.pem')
     }, app).listen(2017)
+````
 
 Wobei "key" der private Schlüssel des Servers und "cert" das Zertifikat ist, das die Identität des Servers bestätigt. Bis vor kurzem war ein solches Zertifikat eine teure Sache. Man musste sich bei einer Zertifizierungsstelle als Inhaber der Website ausweisen und dann einen jährlichen Betrag bezahlen. Heute gibt es mit [Letsencrypt](https://letsencrypt.org) eine kostenlose Variante.  
 
