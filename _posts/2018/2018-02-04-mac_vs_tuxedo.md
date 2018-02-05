@@ -69,7 +69,7 @@ Ein Blick auf die Website zeigt: Bei Tuxedo kann man sich den Laptop bis ins let
 
 ## Wartbarkeit und Erweiterbarkeit
 
-Das Macbook musste ich für einen Akkuwechsel zum Händler bringen. Bei Tuxedo ist das Wechseln des Akku eine Sache von zwei Schiebern und einmal Einrasten. Ein Ersatzakku kostet bei Tuxedo weniger als ein Viertel der Reparatur des Mac. Natürlich weiss ich nicht, ob es diesen Akku noch zu kaufen gibt, wenn ich ihn mal brauche. Diese Langzeit-Sicherheit ist bei Apple sicher grösser. 
+Das Macbook musste ich für einen Akkuwechsel zum Händler bringen. Bei Tuxedo ist das Wechseln des Akku eine Sache von zwei Schiebern und einmal Einrasten. Ein Ersatzakku kostet bei Tuxedo weniger als ein Drittel der Reparatur des Mac. Natürlich weiss ich nicht, ob es diesen Akku noch zu kaufen gibt, wenn ich ihn mal brauche. Diese Langzeit-Sicherheit ist bei Apple sicher grösser. 
 
 Auch sonst ist der Tuxedo weit offen: Man kann Laufwerke und Speicher problemlos selbst austauschen bzw. erweitern, und man kann für alles günstige Standardteile verwenden.
 
