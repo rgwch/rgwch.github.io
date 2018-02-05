@@ -31,7 +31,7 @@ Ich würde sagen: Äusseres: **10:6** für das Macbook.
 
 Der Bildschirm des Macbook ist über jeden Zweifel erhaben - solange das Licht nicht von hintern kommt. Dann kann man es als Rasierspiegel benutzen, aber nicht mehr zum Arbeiten. Der Tuxedo glänzt mit einem matten Display, allerdings nicht mit Retina-Auflösung. 
 
-Das Tippgefühl ist beim Mac besser. Beim Tuxedo ist es zwar auch nicht schlecht, die Tasten haben einen angenehmen Hub und deutlichen Druckpunkt, aber mich störte, dass die Leertaste etwas störrisch war und manchmal mit Nachdruck bedient werden wollte. Vermutlich könnte man das sogar als Garantiefall reklamieren, aber so schlimm war es dann doch wieder nicht.
+Das Tippgefühl ist beim Mac besser. Beim Tuxedo ist es zwar auch nicht schlecht, die Tasten haben einen angenehmen Hub und deutlichen Druckpunkt, aber mich störte, dass die Leertaste etwas störrisch war und manchmal mit Nachdruck bedient werden wollte. Vermutlich könnte man das sogar als Garantiefall reklamieren, aber so schlimm war es dann doch wieder nicht. Raffiniert finde ich, dass der Deckel so gestaltet ist, das er das Notebook hinten ein wenig anhebt, wenn man ihn aufklappt, so dass die Tastatur ergonomisch optimal leicht geneigt steht.
 
 Worin die beiden sich aber wirklich um Längen unterscheiden, ist das Touchpad. Das des Macbook ist gross, präzise und empfindlich, trotzdem aber praktisch immun gegen ungewollte Bewegungen und Berührungen. In all den Jahren hatte ich so gut wie nie das Bedürfnis, eine Maus anzuschliessen. Beim Tuxedo kam dieses Bedürfnis sehr schnell. Natürlich kann man es mit dem Touchpad bedienen, aber wie gesagt: Hier geht es um Welten, wenn man es mit dem MacBook vergleicht.
 
@@ -81,7 +81,7 @@ Kein Zweifel: Beim Macbook sind Hardware und Betriebssystem optimal aufeinander 
 
 Beide Betriebssysteme sind recht offen. Beim MacBook kann man via Homebrew praktisch alle verfügbaren Linux-Programme laufen lassen, und der Darwin-Systemkern ist ebenso OpenSource wie der Kern von Linux. Apple macht es einem aber in den letzten Versionen ein wenig arg schwer, Fremdsoftware laufen zu lassen, scheint sich also von der Offenheit wegbewegen zu wollen. 
 
-Unterm Strich haben beide Konzepte ihre Vor- und Nachteile. Mit Linux kann an "alles" machen, aber man muss manchmal doch lange suchen und googeln, bevor man herausgefunden ist, wie es geht. Standardaufgaben wie Drucker anschliessen, löst Ubuntu Linux inzwischen aber genauso mühelos wie Windows oder MacOS: Anschliessen, geht. Zumindest, wenn es kein Exot ist. 
+Unterm Strich haben beide Konzepte ihre Vor- und Nachteile. Mit Linux kann an "alles" machen, aber man muss manchmal doch lange suchen und googeln, bevor man herausgefunden hat, wie es geht. Standardaufgaben wie Drucker anschliessen, löst Ubuntu Linux inzwischen aber genauso mühelos wie Windows oder MacOS: Anschliessen, geht. Zumindest, wenn es kein Exot ist. 
 
 Zusammengefasst schenken sich die Kontrahenten hier nichts, auch wenn ihre Stärken und Schwächen unterschiedlich verteilt sind.
 
