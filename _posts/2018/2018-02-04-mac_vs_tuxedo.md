@@ -25,47 +25,47 @@ Zeit für einen Vergleich. Vorauszuschicken ist, dass das MacBook 2013 stolze 27
 
 Die Eleganz und Verarbeitungsqualität des MacBook sind legendär. Aber das Tuxedo macht gar keine schlechte Figur daneben. Es ist ebenfalls sehr schlank und schick geformt. Dass es aus Plastik ist, bewirkt gegenüber dem Aluminium-Macbook natürlich eine weniger edle Anmutung, dafür ist es leichter. Die Verarbeitungsqualität erhält das Prädikat "brauchbar". Manche Teile stehen fühlbar ein wenig über. Die Tastatur ist angenehm gross, aber im Gegensatz zu der des Mac nicht beleuchtet. Kleiner Minuspunkt bei schlechten Lichtverhältnissen.
 
-Ich würde sagen: Äusseres: 10:6 für das Macbook.
+Ich würde sagen: Äusseres: **10:6** für das Macbook.
 
 ## Schauen, Hören und Fühlen
 
 Der Bildschirm des Macbook ist über jeden Zweifel erhaben - solange das Licht nicht von hintern kommt. Dann kann man es als Rasierspiegel benutzen, aber nicht mehr zum Arbeiten. Der Tuxedo glänzt mit einem matten Display, allerdings nicht mit Retina-Auflösung. 
 
-Das Tippgefühl ist beim Mac besser. Beim Tuxedo störte mich besonders, dass die Leertaste etwas störrisch war und manchmal mit Nachdruck bedient werden wollte. Vermutlich könnte man das sogar als Garantiefall reklamieren, aber so schlimm war es dann doch wieder nicht.
+Das Tippgefühl ist beim Mac besser. Beim Tuxedo ist es zwar auch nicht schlecht, die Tasten haben einen angenehmen Hub und deutlichen Druckpunkt, aber mich störte, dass die Leertaste etwas störrisch war und manchmal mit Nachdruck bedient werden wollte. Vermutlich könnte man das sogar als Garantiefall reklamieren, aber so schlimm war es dann doch wieder nicht.
 
-Worin die beiden sich aber wirklich um Längen unterscheiden, ist das Touchpad. Das des Macbook ist gross, präzise und empfindlich, trotzdem aber praktisch immun gegen ungewollte Bewegungen und Berührungen. In all den Jahren hatte ich so gut wie nie das Bedürfnis, eine Maus anzuschliessen. Beim Tuxedo kam dieses Bedürfnis sehr schnell. Natürlich kann man es mit dem Touchpad bedienen, aber wie gesagt: Hier geht es um Längen, wenn man es mit dem MacBook vergleicht.
+Worin die beiden sich aber wirklich um Längen unterscheiden, ist das Touchpad. Das des Macbook ist gross, präzise und empfindlich, trotzdem aber praktisch immun gegen ungewollte Bewegungen und Berührungen. In all den Jahren hatte ich so gut wie nie das Bedürfnis, eine Maus anzuschliessen. Beim Tuxedo kam dieses Bedürfnis sehr schnell. Natürlich kann man es mit dem Touchpad bedienen, aber wie gesagt: Hier geht es um Welten, wenn man es mit dem MacBook vergleicht.
 
 Das MacBook hört man fast nie. Wenn man doch einmal den Lüfter hört, dann in einer wenig störenden Tonlage. Beim Tuxedo schaltet sich der etwas höher sirrende Lüfter schon beim Compilieren oder Video schneiden hörbar ein. Allerdings nur in sehr ruhiger Umgebung störend.
 
-Meine Wertung: 10:5 fürs MacBook in dieser Kategorie.
+Meine Wertung: **10:5** fürs MacBook in dieser Kategorie.
 
 ## Leistung
 
-Beide Computer fühlen sich subjektiv sehr schnell an. Störende Wartezeiten gibt es nie, Programmstarts sind praktisch augenblicklich. Aber auch objektiv geben sich beide keine Blösse. Obwohl das Tuxedo "nur" einen i5 Prozessor hat, gegenüber dem i7 des Mac (allerdings einer neueren Generation), kann es problemlos mithalten. Als Benchmark zum Beispiel das Compilieren von [elexis-3-base](https://github.com/rgwch/elexis-3-base):
+Beide Computer fühlen sich subjektiv sehr schnell an. Störende Wartezeiten gibt es nie, Programmstarts sind praktisch augenblicklich. Aber auch objektiv geben sich beide keine Blösse. Obwohl das Tuxedo "nur" einen i5 Prozessor hat, gegenüber dem i7 des Mac (allerdings einer älteren Generation), kann es problemlos mithalten. Als Benchmark zum Beispiel das Compilieren von [elexis-3-base](https://github.com/rgwch/elexis-3-base):
 
-* MacBook pro 16GB, SSD, Core i7-3740:    4' 13".
-* Tuxedo BU1407 16GB, SSD, Core i5:       2' 57" 
+* MacBook pro 16GB, SSD, Core i7-3740:          3' 13".
+* Tuxedo BU1407 16GB, SSD, Core i5-8250:        2' 57" 
 
 Auch Geekbench sieht die beiden dicht beieinander:
 
 * MacBook:  Single-Core: 3484, Multi-Core: 13484 Punkte.
 * Tuxedo:   Single-Core: 3308, Multi-Core: 12632 Punkte.
 
-Hier kann die Wertung nur ausgeglichen sein: 10:10 Punkte.
+Hier kann die Wertung nur ausgeglichen sein: **10:10** Punkte.
 
 ## Batterielaufzeit
 
 Naja, die Batterie des MacBook war ja am Ende. Am Anfang hielt sie rund 10 Stunden durch, und erst nach etwa 3 Jahren bemerkte ich eine gewisse Verschlechterung.
 
-Die Batterie des Tuxedo hielt gut 8 Stunden durch, über Langzeiterfahrungen kann ich naturgemäss noch nichts berichten. Jedenfalls ist die Laufzeit auch für längere Bahnfahrten und Stitzungen gut ausreichend.
+Die Batterie des Tuxedo hielt gut 8 Stunden durch, über Langzeiterfahrungen kann ich naturgemäss noch nichts berichten. Jedenfalls ist die Laufzeit auch für längere Bahnfahrten und Sitzungen gut ausreichend.
 
-10:9 fürs MacBook.
+**10:9** fürs MacBook.
 
 ## Konfigurierbarkeit
 
-Ein Blick auf die Website zeigt: Bei Tuxedo kann man sich den Laptop bis ins letzte Detail zusammenstellen. Mehrere unterschiedliche Laufwerke, verschiedene Prozessoren usw. Beim Apple gibt es nur eine Hand voll Konfugurationen.
+Ein Blick auf die Website zeigt: Bei Tuxedo kann man sich den Laptop bis ins letzte Detail zusammenstellen. Mehrere unterschiedliche Laufwerke, verschiedene Prozessoren usw. Beim Apple gibt es nur eine Hand voll Konfigurationen.
 
-7:10 für Tuxedo
+**7:10** für Tuxedo
 
 ## Wartbarkeit und Erweiterbarkeit
 
@@ -73,7 +73,7 @@ Das Macbook musste ich für einen Akkuwechsel zum Händler bringen. Bei Tuxedo i
 
 Auch sonst ist der Tuxedo weit offen: Man kann Laufwerke und Speicher problemlos selbst austauschen bzw. erweitern, und man kann für alles günstige Standardteile verwenden.
 
-3:10 für Tuxedo.
+**3:10** für Tuxedo.
 
 ## Systemintegration und Betriebssystem
 
@@ -85,11 +85,11 @@ Unterm Strich haben beide Konzepte ihre Vor- und Nachteile. Mit Linux kann an "a
 
 Zusammengefasst schenken sich die Kontrahenten hier nichts, auch wenn ihre Stärken und Schwächen unterschiedlich verteilt sind.
 
-8:8.
+**8:8**
 
 # Fazit
 
-Wenn man einfach nur die Punkte zusammenzählt, liegt Tuxedo nun sogar vorne. Das hat es allerdings vor allem seiner leichten Reparierbarkeit zu verdanken. Und natürlich wird man nie alle Bereiche gleich werten. 
+Wenn man einfach nur die Punkte zusammenzählt, liegt Tuxedo mit 58:58 Punkten gleich auf mit dem dreimal so teuren Mac. Das hat es allerdings vor allem seiner leichten Reparierbarkeit zu verdanken. Und natürlich wird man nie alle Bereiche gleich werten. 
 
 # Und noch ein PS
 
