@@ -5,7 +5,7 @@ date: 2025-05-18
 tags: [Website, Proxy, Server]
 category: Administration
 ---
-Ein reverse tunnel dient dazu, eine SSH-Verbindung vom Server zum Client aufzubauen, also umgekehrt, wie man das normalerweise tut. Das ist nützlich, wenn der Server von aussen nicht direkt erreichbar ist, und darum selber die Verbindnung initiieren muss.
+Ein Reverse Tunnel dient dazu, eine SSH-Verbindung vom Server zum Client aufzubauen, also umgekehrt, wie man das normalerweise tut. Das ist nützlich, wenn der Server von aussen nicht direkt erreichbar ist, und darum selber die Verbindung initiieren muss.
 
 ### Beispiel 1
 

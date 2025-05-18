@@ -90,6 +90,7 @@ Das wollen wir nun ändern:
 Damit keine Usernamen und Passwörter im Klartext in users.json stehen, werden sie gehasht.
 Allerdings ist es dann nicht ganz einfach, sie in die Konfiguration zu kriegen. Da dies ein kleines Projekt mit einer absehbaren Zahl von Usern ist, machen wir uns das sehr einfach: Es gibt einen zweiten REST-Endpoint zum Eintragen von Usern, den wir vor der app.listen()-Zeile einfügen:
 
+```javascript
     app.get("/adduser/:username/:password",function(req,resp){
       var user=JSON.stringify(hash(req.params['username']+salt))
       var password=JSON.stringify(hash(req.params['password']+salt))
@@ -97,6 +98,7 @@ Allerdings ist es dann nicht ganz einfach, sie in die Konfiguration zu kriegen. 
         nconf.save()
         resp.send("Ok")
     })
+```
 
 Jetzt können wir höchst simpel mit `http://raspi:3000/adduser/hans/peter` unseren ersten User eintragen. Danach sollte `http://raspi:3000/garage/hans/peter` eine freundliche Willkommensmeldung zurückliefern. (Über die Tatsache, dass die Nachricht "Die Garage öffnet sich!" eine klassische Fake-News ist, wollen wir jetzt mal gnädig hinwegsehen.)
 
@@ -129,6 +131,7 @@ Dann fügen wir im Kopf von 'garage.js' folgende Zeilen hinzu:
 
 Und ändern dann den Erfolg-Teil des garage-Endpoints wie folgt:
 
+```javascript
     if(valid && valid == password){
       console.log("Das Garagentor tut etwas!")
       rpio.write(12,rpio.HIGH)
@@ -136,6 +139,7 @@ Und ändern dann den Erfolg-Teil des garage-Endpoints wie folgt:
       rpio.write(12,rpio.LOW)
       response.send("Auftrag ausgeführt, "+request.params['user'])
     }
+```
 
 Also: Wir "drücken den Knopf" eine Sekunde lang und lassen ihn dann wieder los. Wenn das Garagentor sich zuletzt geöffnet hat, dann schliesst es sich jetzt, wenn es sich gerade bewegt, dann bleibt es stehen, und wenn es sich zuletzt geschlossen hatte, dann geht es jetzt auf.
 

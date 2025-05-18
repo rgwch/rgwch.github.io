@@ -42,25 +42,27 @@ ist, muss man überhaupt nichts konfigurieren.
 
 Wenn man etwas anderes will, dann muss man das Plugin in der Sektion &lt;build&gt; der pom.xml aufnehmen und konfigurieren.
 
-      <project>
-        ...
-        <build>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <version>3.3</version>
-              <configuration>
-                <source>1.8</source>
-                <target>1.8</target>
-                <debug>false</debug>
-                <optimize>true</optimize>
-              </configuration>
-            </plugin>
-          </plugins>
-        </build>
-        ...
-      </project>
+```xml
+<project>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <debug>false</debug>
+          <optimize>true</optimize>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  ...
+</project>
+```
 
 In diesem Beispiel wollen wir, dass der Compiler optimierten java 8 - Bytecode 
 ohne Debug-Informationen erstellt. Alle anderen Einstellungen bleiben auf default.
@@ -70,28 +72,30 @@ mit debug-Informationen erstellt.
 
 Ebenfalls häufig wird man das maven-jar-plugin rekonfigurieren wollen:
 
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>2.6</version>
-          <configuration>
-              <archive>
-                  <addMavenDescriptor>true</addMavenDescriptor>
-                  <compress>true</compress>
-                  <index>true</index>
-                  <manifest>
-                      <addClasspath>true</addClasspath>
-                      <mainClass>ch.webelexis.Runner</mainClass>
-                  </manifest>
-                  <manifestEntries>
-                      <mode>production</mode>
-                      <url>${project.url}</url>
-                      <timestamp>${maven.build.timestamp}</timestamp>
-                  </manifestEntries>
-              </archive>
-          </configuration>
-      </plugin>
-      
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <version>2.6</version>
+    <configuration>
+        <archive>
+            <addMavenDescriptor>true</addMavenDescriptor>
+            <compress>true</compress>
+            <index>true</index>
+            <manifest>
+                <addClasspath>true</addClasspath>
+                <mainClass>ch.webelexis.Runner</mainClass>
+            </manifest>
+            <manifestEntries>
+                <mode>production</mode>
+                <url>${project.url}</url>
+                <timestamp>${maven.build.timestamp}</timestamp>
+            </manifestEntries>
+        </archive>
+    </configuration>
+</plugin>
+```
+
 Standardmässig erstellt der jar.packager kein Attribut "mainClass" in Manifest, so dass das resultierende jar
 nicht startfähig ist. Mit obiger Modifikation klappt es. Der Abschnitt &lt;manifestEntries&lt; dient nur zur
 Illustration, wie man beliebige weitere Attribute ins Manifest einbringen kann.
@@ -99,20 +103,21 @@ Illustration, wie man beliebige weitere Attribute ins Manifest einbringen kann.
 Das nächste Beispiel ist ein Plugin, das nicht zum Standard-Lieferumfang von Maven gehört. Es wird darum beim ersten
 Start des Projekts heruntergeladen.
 
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-shade-plugin</artifactId>
-            <version>2.4</version>
-            <executions>
-                <execution>
-                    <phase>package</phase>
-                    <goals>
-                        <goal>shade</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-shade-plugin</artifactId>
+    <version>2.4</version>
+    <executions>
+        <execution>
+            <phase>package</phase>
+            <goals>
+                <goal>shade</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+```
 
 Dieses Plugin löst folgendes Problem: Wenn man ein Projekt erstellt, das mehrere Abhängigkeiten hat, dann läuft das auf dem eigenen
 Computer wunderbar. Wenn man nun daraus ein .jar erstellt, und dieses jar weitergibt, dann wird es auf den meisten Zielcomputern
@@ -129,57 +134,63 @@ als "Uber-Jar" ist der Begriff "Fat-Jar" für solche jars.
 Manchmal will man selber irgendwelche Eigenschaften definieren. Das Sammelbecken für alles Mögliche ist der Abschnitt
 &lt;properties&gt;
 
-    <properties>
-        <vertx-version>3.0.0</vertx-version>
-        <maven.build.timestamp.format>E, dd MM yyyy HH:mm:ss z</maven.build.timestamp.format>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <hallo>Grüezi</hallo>
-    </properties>
+```xml
+<properties>
+    <vertx-version>3.0.0</vertx-version>
+    <maven.build.timestamp.format>E, dd MM yyyy HH:mm:ss z</maven.build.timestamp.format>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <hallo>Grüezi</hallo>
+</properties>
+```
 
 Hier legen wir einige Variablen fest, auf die wir später zugreifen können:
 
-    <dependencies>
-    ...
-      <dependency>
-          <groupId>io.vertx</groupId>
-          <artifactId>vertx-core</artifactId>
-          <version>${vertx-version}</version>
-      </dependency>
-      <dependency>
-          <groupId>io.vertx</groupId>
-          <artifactId>vertx-web</artifactId>
-          <version>${vertx-version}</version>
-      </dependency>
-      <dependency>
-          <groupId>io.vertx</groupId>
-          <artifactId>vertx-mongo-client</artifactId>
-          <version>${vertx-version}</version>
-      </dependency>
-    <dependencies>
-    
+```xml
+<dependencies>
+...
+  <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-core</artifactId>
+      <version>${vertx-version}</version>
+  </dependency>
+  <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-web</artifactId>
+      <version>${vertx-version}</version>
+  </dependency>
+  <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-mongo-client</artifactId>
+      <version>${vertx-version}</version>
+  </dependency>
+<dependencies>
+```
+
 Wir haben eine Variable vertx.version definiert, damit wir bei Versionsänderungen nur eine einzige Stelle in der pom.xml 
 ändern müssen.
 
 oder:
 
-    <build>
-      <plugins>
-        ...
-        <plugin>
-          ...
-          <artifactId>maven-jar-plugin</artifactId>
-          <configuration>
-            <archive>
-                <manifestEntries>
-                    <mode>production</mode>
-                    <url>${project.url}</url>
-                    <timestamp>${maven.build.timestamp}</timestamp>
-                </manifestEntries>
-            </archive>
-          <configuration>
-        </plugin>
-      </plugins>
-    </build>
+```xml
+<build>
+  <plugins>
+    ...
+    <plugin>
+      ...
+      <artifactId>maven-jar-plugin</artifactId>
+      <configuration>
+        <archive>
+            <manifestEntries>
+                <mode>production</mode>
+                <url>${project.url}</url>
+                <timestamp>${maven.build.timestamp}</timestamp>
+            </manifestEntries>
+        </archive>
+      <configuration>
+    </plugin>
+  </plugins>
+</build>
+```
 
 Hier verwenden wir die property maven.build.timestamp.format, um im Manifest des erstellten jars ein
 Attribut "timestamp" im gewünschten Format zu erstellen.

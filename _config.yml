@@ -41,3 +41,4 @@ redcarpet:
     ]
 
 exclude: ["README.md", "LICENSE", "save"]
+plugins: [jekyll-paginate]

@@ -64,82 +64,85 @@ Das Plugin besteht aus folgenden Teilen:
 pom.xml (wer hätte das gedacht?) Ich zitiere hier nur die relevanten Stellen. Die ganze Datei kann im Quelltext mit
 oben im ersten Absatz stehendem Link heruntergeladen werden.
 
-        <?xml version="1.0" encoding="UTF-8"?>
-        <project xmlns="http://maven.apache.org/POM/4.0.0"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-            <modelVersion>4.0.0</modelVersion>
-            <groupId>rgwch</groupId>
-            <artifactId>mimosa-maven-plugin</artifactId>
-            <version>1.0.1</version>
-            <packaging>maven-plugin</packaging>
-            <dependencies>
-                <dependency>
-                    <groupId>org.apache.maven</groupId>
-                    <artifactId>maven-plugin-api</artifactId>
-                    <version>3.3.3</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.maven.plugin-tools</groupId>
-                    <artifactId>maven-plugin-annotations</artifactId>
-                    <version>3.4</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>commons-io</artifactId>
-                    <version>1.3.2</version>
-                </dependency>
-        
-            </dependencies>
-        </project>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>rgwch</groupId>
+    <artifactId>mimosa-maven-plugin</artifactId>
+    <version>1.0.1</version>
+    <packaging>maven-plugin</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>3.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+
+    </dependencies>
+</project>
+```
 
 Das Einzige, was anders ist, als bei anderen Maven-Projekten, ist &lt;packaging&gt;
 
 Und dann im Wesentlichen der Klasse ch.rgw.mmp.MimosaMavenPlugin.java:
 
-     package ch.rgw.mmp;
-     
-     import org.apache.commons.io.FileUtils;
-     import org.apache.maven.plugin.AbstractMojo;
-     import org.apache.maven.plugin.MojoExecutionException;
-     import org.apache.maven.plugin.MojoFailureException;
-     import org.apache.maven.plugins.annotations.Mojo;
-     import org.apache.maven.plugins.annotations.Parameter;
-     
-     import java.io.File;
-     import java.io.IOException;
-     
-     @Mojo(name = "mimosa")
-     public class MimosaMavenPlugin extends AbstractMojo {
-     
-       @Parameter private File source;
-       @Parameter private File intermediate;
-       @Parameter private File dest;
-       @Parameter private String mimosaOptions;
-     
-       public void execute() throws MojoExecutionException, MojoFailureException {
-         if (!dest.exists() && !dest.mkdirs()) {
-           throw new MojoFailureException(null, "could not create directory " + dest.getAbsolutePath(), "");
-         }
-         getLog().info("launching mimosa from " + source.getAbsolutePath());
-         try {
-           Process mimosa=Runtime.getRuntime().exec("mimosa build", null,source);
-           StreamBuffer errorStream=new StreamBuffer(mimosa.getErrorStream(),"ERROR");
-           StreamBuffer outputStream=new StreamBuffer(mimosa.getInputStream(),"OUTPUT");
-           errorStream.start();
-           outputStream.start();
-           getLog().info(Integer.toString(mimosa.waitFor()));
-           FileUtils.copyDirectory(intermediate,dest);
-         } catch (IOException e) {
-           e.printStackTrace();
-           throw new MojoFailureException(e.getMessage());
-         } catch (InterruptedException e) {
-           e.printStackTrace();
-           throw new MojoFailureException(e.getMessage());
-         }
-       }
-     }
+```java
+package ch.rgw.mmp;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
+
+import java.io.File;
+import java.io.IOException;
+
+@Mojo(name = "mimosa")
+public class MimosaMavenPlugin extends AbstractMojo {
+
+    @Parameter private File source;
+    @Parameter private File intermediate;
+    @Parameter private File dest;
+    @Parameter private String mimosaOptions;
+
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        if (!dest.exists() && !dest.mkdirs()) {
+        throw new MojoFailureException(null, "could not create directory " + dest.getAbsolutePath(), "");
+        }
+        getLog().info("launching mimosa from " + source.getAbsolutePath());
+        try {
+        Process mimosa=Runtime.getRuntime().exec("mimosa build", null,source);
+        StreamBuffer errorStream=new StreamBuffer(mimosa.getErrorStream(),"ERROR");
+        StreamBuffer outputStream=new StreamBuffer(mimosa.getInputStream(),"OUTPUT");
+        errorStream.start();
+        outputStream.start();
+        getLog().info(Integer.toString(mimosa.waitFor()));
+        FileUtils.copyDirectory(intermediate,dest);
+        } catch (IOException e) {
+        e.printStackTrace();
+        throw new MojoFailureException(e.getMessage());
+        } catch (InterruptedException e) {
+        e.printStackTrace();
+        throw new MojoFailureException(e.getMessage());
+        }
+    }
+}
+```
 
 Das ist alles. Die Klasse StreamBuffer liste ich hier jetzt nicht auf, die erledigt nur das
 Handling des outputs von Mimosa. Die einzige Besonderheit dieser Klasse sind die Annotationen @Mojo und
@@ -154,26 +157,27 @@ Hier definieren wir, dass es auf den Namen "mimosa" hören soll.
 
 Der Aufruf unseres Plugins in der pom.xml von webelexis-server sieht so aus:
 
-      <plugin>
-          <groupId>rgwch</groupId>
-          <artifactId>mimosa-maven-plugin</artifactId>
-          <version>1.0.1</version>
-          <configuration>
-              <source>../webelexis-client</source>
-              <intermediate>../webelexis-client/dist</intermediate>
-              <dest>target/classes/web</dest>
-              <mimosaOptions>-m</mimosaOptions>
-          </configuration>
-          <executions>
-              <execution>
-                  <id>1</id>
-                  <phase>prepare-package</phase>
-                  <goals>
-                      <goal>mimosa</goal></goals>
-              </execution>
-          </executions>
-      </plugin>
-      
+```xml
+<plugin>
+    <groupId>rgwch</groupId>
+    <artifactId>mimosa-maven-plugin</artifactId>
+    <version>1.0.1</version>
+    <configuration>
+        <source>../webelexis-client</source>
+        <intermediate>../webelexis-client/dist</intermediate>
+        <dest>target/classes/web</dest>
+        <mimosaOptions>-m</mimosaOptions>
+    </configuration>
+    <executions>
+        <execution>
+            <id>1</id>
+            <phase>prepare-package</phase>
+            <goals>
+                <goal>mimosa</goal></goals>
+        </execution>
+    </executions>
+</plugin>
+```      
       
 Hier wird deklariert, welche Parameter das Plugin bekommt, nämlich das Basisverzeichnis des Client-Projekts, 
 dessen Ausgabeverzeichnis, sowie das endgültige Zielverzeichnis im Server-Projekt.
@@ -239,37 +243,41 @@ wird Maven sie nicht finden. Wie sollte es auch? "irgendwo im Internet" ist kein
 
 Folgender Eintrag in der pom.xml von webelexis-server löst dieses Problem:
 
-    <pluginRepositories>
-        <pluginRepository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-rgwch-maven</id>
-            <name>bintray-plugins</name>
-            <url>http://dl.bintray.com/rgwch/maven</url>
-        </pluginRepository>
-        <pluginRepository>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>central</id>
-            <name>Central Repository</name>
-            <url>http://repo.maven.apache.org/maven2</url>
-        </pluginRepository>
-    </pluginRepositories>
+```xml
+<pluginRepositories>
+    <pluginRepository>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+        <id>bintray-rgwch-maven</id>
+        <name>bintray-plugins</name>
+        <url>http://dl.bintray.com/rgwch/maven</url>
+    </pluginRepository>
+    <pluginRepository>
+        <releases>
+            <updatePolicy>never</updatePolicy>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+        <id>central</id>
+        <name>Central Repository</name>
+        <url>http://repo.maven.apache.org/maven2</url>
+    </pluginRepository>
+</pluginRepositories>
+```
 
 Damit erklären wir Maven, dass es Plugins nicht nur in repo.maven.apache.org, sondern auch in dl.bintray.com/rgwch/maven
 suchen soll.
 
 Jetzt kann jeder nodejs- und maven-Besitzer Webelexis sehr einfach selber bauen: 
 
-    git clone https://github.com/rgwch/webelexis.git
-    sudo npm install -g mimosa
-    cd webelexis/webelexis-server
-    mvn package
+```bash
+git clone https://github.com/rgwch/webelexis.git
+sudo npm install -g mimosa
+cd webelexis/webelexis-server
+mvn package
+```
     
 Das ist alles. Das mimosa-maven-plugin wird im Rahmen von mvn package automatisch von bintray  heruntergeladen,
 installiert und ausgeführt.

@@ -27,7 +27,7 @@ Google hilft, aber nur mit den exakt richtigen Suchbegriffen...
 
 Kurz: Folgendes muss man beim git repository eingeben:
 
-    git config http.postBuffer 524288000
+    `git config http.postBuffer 524288000`
     
 Dann klappt's auch mit dem Pushen.
 
