@@ -1,16 +1,16 @@
 <div class="sidebar well">
-{{ site.description }}
+  {{ site.description }}
 </div>
 
 <div class="sidebar well">
-    <h1>Letzte Einträge</h1>
-    <ul>
-        {% for post in site.posts limit:5 %}
-          <li><a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
+  <h1>Letzte Einträge</h1>
+  <ul>
+    {% for post in site.posts limit:8 %}
+    <li><a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
 </div>
 
 <div class="sidebar well">
-{% include links-list.html %}
+  {% include links-list.html %}
 </div>

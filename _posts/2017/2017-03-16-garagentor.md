@@ -2,8 +2,8 @@
 layout: post
 title: Garagentor-Fernbedienung
 description: Wie man das Garagentor mit dem Handy öffnet
-category: Haus Automation
-tags: [Wohnen,Fernbedienung,Raspberry,Javascript,NodeJS]
+category: smarthome
+tags: [wohnen,fernbedienung,raspberry,javascript,node]
 ---
 Zur [zweiten Version](/2017/03/garagentor2)
 

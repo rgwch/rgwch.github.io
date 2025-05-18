@@ -2,8 +2,8 @@
 layout: post
 title: Maven - Plugin! Plug in!
 description: Wie man ein Maven-Plugin schreibt
-category: Programmieren allgemein
-tags: [Maven, Programmieren, Plugin]
+category: programmieren
+tags: [maven, programmieren, plugin, java, tools]
 ---
 
 [Teil 1](/2015/07/Maven) [Teil 2](/2015/07/pom) [Teil 3](/2015/07/configuration) Teil 4

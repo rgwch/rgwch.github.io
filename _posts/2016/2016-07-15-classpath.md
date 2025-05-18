@@ -2,8 +2,8 @@
 layout: post
 title: Eclipse .classpath
 description: Die Sache mit dem .classpath
-category: Programmieren allgemein
-tags: [Java, eclipse]
+category: programmieren
+tags: [java, eclipse]
 ---
 
 In Java hat der classpath ja eine klar definierte Bedeutung: Er enthält alle Orte, an denen der Java Compiler und

@@ -2,8 +2,8 @@
 layout: post
 title: Datensicherheit
 description: Ist RAID wirksam
-category: Administration
-tags: [Server, admin, filesystem, Dateisystem]
+category: administration
+tags: [server, admin, filesystem, dateisystem,raid]
 ---
 
 ## Festplattenredundanz mit RAID & Co.

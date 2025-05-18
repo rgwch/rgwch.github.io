@@ -2,7 +2,8 @@
 layout: post
 title: "Manjaro Snippets"
 date: "2015-05-23"
-category: "Linux admin"
+category: linux
+tags: [linux,admin]
 ---
 Paket installieren:
 

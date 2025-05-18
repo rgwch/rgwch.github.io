@@ -2,8 +2,8 @@
 layout: "post"
 title: "Arch Linux"
 date: "2016-07-29 14:21"
-tags: "linux,installieren"
-category: "Linux admin"
+tags: [linux,distros]
+category: "linux"
 ---
 [Arch Linux](http://www.archlinux.org) hat ja den Ruf, ein Linux für eher hartgesottene Freaks zu sein.
 

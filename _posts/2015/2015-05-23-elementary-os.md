@@ -2,8 +2,8 @@
 layout: post
 title: "Elementary OS"
 date: "2015-05-23"
-tags: "Linux, installieren"
-category: "Linux admin"
+tags: [linux, admin]
+category: linux
 ---
 
 [Elementary](http://elementary.io) ist ein relativ neues Ubuntu-Derivat, das vor allem durch elegante, Mac-ähnliche Optik glänzt.

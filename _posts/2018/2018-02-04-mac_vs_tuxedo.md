@@ -2,8 +2,8 @@
 layout: post
 title: MacBook pro vs. Tuxedo
 description: Ein unfairer Vergleich
-category: Hardware
-tags: [Laptop,Mac,Linux,Tuxedo]
+category: hardware
+tags: [laptop,mac,linux,tuxedo]
 ---
 In diesem Post vergleiche ich zwei Computer, die man eigentlich nicht vergleichen kann: Ein 2013er MacBook pro 15 '' Retina Display und ein 2018er [Tuxedo](https://www.tuxedocomputers.com/de/TUXEDO-Book-BU1407-14-matt-Full-HD-IPS-bis-Intel-Core-i7-Energiespar-CPU-zwei-HDD/SSD-bis-32GB-RAM-bis-10h-Akku-Slim-Book-LTE-opt.tuxedo) Notebook mit 14'' Bildschitm und Ubuntu Linux 16.04.
 

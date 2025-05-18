@@ -2,8 +2,8 @@
 layout: post
 title: Server-Festplatten
 description: Vergleich
-category: Administration
-tags: [Server, admin, filesystem, Dateisystem, Harddisk]
+category: administration
+tags: [server, admin, filesystem, dateisystem, harddisk]
 ---
 
 ## Geschwindigkeitsvergleich einiger externer Speichermethoden auf dem Server.

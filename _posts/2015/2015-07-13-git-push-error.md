@@ -3,7 +3,7 @@ layout: post
 title: Git Error 411
 description: 
 category: tips/tricks
-tags: [git, lighttpd]
+tags: [git, lighttpd, tools, repository]
 ---
 
 Git meldet beim Push folgendes:

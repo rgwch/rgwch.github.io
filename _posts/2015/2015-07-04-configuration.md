@@ -2,8 +2,8 @@
 layout: post
 title: Maven - Konfiguration
 description: einige Punkte in Pom.xml
-category: Programmieren allgemein
-tags: [Maven, pom]
+category: programmieren
+tags: [maven, pom, tools, java]
 ---
 
 [Teil 1](/2015/07/Maven) [Teil 2](/2015/07/pom) Teil 3 [Teil 4](/2015/07/maven-plugin)
