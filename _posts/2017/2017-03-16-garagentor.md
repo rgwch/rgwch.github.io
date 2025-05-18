@@ -56,6 +56,7 @@ Im Terminal:
 
  Dann kann man einen trivialen REST-Server erstellen:
 
+ ```javascript
     // garage.js
     var express=require('express')
     var nconf=require('nconf')
@@ -80,6 +81,7 @@ Im Terminal:
     app.listen(3000,function(){
       console.log("Garagenserver läuft an port 3000")
     })
+```
 
 Mit `node garage.js` kann man das Ding starten. Dann können wir mit `http://raspi:3000/garage/hans/peter` zugreifen und erhalten immer "Wer bist denn du???" zurück, da ja noch kein User 'hans' mit Paswort 'peter' bekannt ist.
 
