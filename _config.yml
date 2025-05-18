@@ -13,15 +13,15 @@ url: http://rgwch.github.io
 # baseurl: /
 
 # This can be '' to hide the Github nav button
-github: ''
+github: ""
 
 # Set this to your UA-# value, or '' to disable the block completely
-gaaccount: ''
+gaaccount: ""
 
 # Set this to your disqus shortname to enable comments. Note that the 'comments'
 # setting below must also be true. Individual posts can override 'comments' to
 # disable on a post-by-post basis
-disqus: ''
+disqus: ""
 comments: true
 
 permalink: /:year/:month/:title
@@ -30,6 +30,14 @@ paginate: 4
 highlighter: rouge
 markdown: kramdown
 redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+  extensions:
+    [
+      "no_intra_emphasis",
+      "fenced_code_blocks",
+      "autolink",
+      "tables",
+      "with_toc_data",
+      "highlight",
+    ]
 
-exclude: ['README.md', 'LICENSE', 'save']
+exclude: ["README.md", "LICENSE", "save"]
