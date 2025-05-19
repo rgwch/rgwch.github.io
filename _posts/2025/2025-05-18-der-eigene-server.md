@@ -25,7 +25,7 @@ Als nächstes müssen Sie sicherstellen, dass Ihr Server oder Proxy überhaupt g
 ### Der Server
 
 Was für einen Computer benötigen Sie als Server für, sagen wir, 5 Websites, eine NodeJS-App und einen Docker-Container mit NextCloud?
-Verblüffend wenig: Ein Raspberri Pi 4 mit 4GB Ram genügt. Wie oben gesagt soll der Computer möglichst keine Verbindung zu Ihrem restlichen Netz haben. Manche Router und Switches gestatten es, für solche Zwecke, eine sogenannte "Demilitarisierte Zone" (DMZ) einzurichten, die logisch vom restlichen LAN völlig getrennt ist. Wenn das nicht geht, sorgen Sie zumindest dafür, dass auf dem Server keinerlei Daten gespeichert sind, die den Zugriff auf andere Computer ermöglichen, und dass alles im Netz passwortgeschützt ist.
+Verblüffend wenig: Ein Raspberri Pi 4 mit 4GB Ram genügt. Wie oben gesagt soll der Computer möglichst keine Verbindung zu Ihrem restlichen Netz haben. Manche Router und Switches gestatten es, für solche Zwecke, eine sogenannte "Demilitarisierte Zone" (DMZ) einzurichten, die logisch vom restlichen LAN völlig getrennt ist. Wenn das nicht geht, sorgen Sie zumindest dafür, dass auf dem Server keinerlei Daten gespeichert sind, die den Zugriff auf andere Computer ermöglichen, und dass alles im Netz passwortgeschützt ist. Und natürlich soll der Server zu nichts anderem, als zum Ausliefern der Websites dienen. Er soll auf keinen Fall noch nebenher als Heimserver, Smarthome-Hub oder Bürocomputer dienen. Wenn er gekapert wird, dann soll der ANgreifer nichts anderes als diesen Computer zerstören können. Und den können sie ja leicht wieder aufsetzen (Wenn Sie für regelmässige [Backups](/2023/10/backup) sorgen).
 
 Setzen Sie den Raspberry auf, am besten mit einem minimalen OS. (Serverdienste brauchen kein UI). Wenn Ihr Router von aussen erreichbar ist, müssen Sie eine Portweiterleitung auf den Server einrichten, wenn nicht, auf dem Server einen [Reverse Tunnel](/2025/05/reverse-tunnel) zu einem externen Proxy aufbauen.
 
@@ -34,7 +34,7 @@ Setzen Sie den Raspberry auf, am besten mit einem minimalen OS. (Serverdienste b
 Angenommen, Sie haben 5 Websites, eine NodeJS-App und einen Nextcloud-Container laufen. Woher weiss der Server denn, welche Seite er einem Besucher ausgeben soll?
 Dafür richten wir einen Reverse Proxy auf dem Server (oder einem anderen Computer) ein. Das ist nicht zu verwechseln mit dem Reverse Tunnel, über den wir weiter oben gesprochen haben. Der Reverse Proxy entnimmt dem Header jeder Anfrage die Information, welcher Dienst gemeint war, und sendet sie zum entsprechenden "virtuellen Server" weiter.
 
-Nun nehmen wir mal an, wir haben die Webseiten "meine-familie.ch", "ich.meine-familie.ch", den Webservice "agenda.meine-familie.ch" und den Clouddienst "cloud.meine-familie.ch"
+Nun nehmen wir mal an, wir haben die Webseiten "meine-familie.ch", "mein-verein.ch", den Webservice "agenda.meine-familie.ch" und den Clouddienst "cloud.meine-familie.ch"
 
 Dann benötigen wir folgende Konfigurationen in /etc/apache2/
 
@@ -54,7 +54,7 @@ Dann benötigen wir folgende Konfigurationen in /etc/apache2/
 
 Hier leiten wir Anfragen für cloud.meine-familie.ch auf Port 80 auf einen Serverprozess um, der auf demselben Server auf Port 8082 läuft. Man könnte ohne Weiteres statt localhost auch einen anderen im gleichen Netz erreichbaren Computer einsetzen. Eine solche Konfiguration kann zum Beispiel unabhängige Docker-Applikationen, oder eigenständige Web-Apps ansteuern.
 
-2: Definition für die Website 'meine-familie.ch'
+2: Definitionen für die Website 'meine-familie.ch' und 'mein-verein.ch'
 `/etc/apache2/sites-available/familienseite.conf`
 
 ```apache
@@ -65,6 +65,16 @@ Hier leiten wir Anfragen für cloud.meine-familie.ch auf Port 80 auf einen Serve
         CustomLog /var/www/family/log/access.log combined
 </VirtualHost>
 ```
+`/etc/apache2/sites-available/vereinsseite.conf`
+```apache
+<VirtualHost *:80>
+        ServerName mein-verein.ch
+        ServerAlias www.mein-verein.ch
+        DocumentRoot "/var/www/verein/http"
+        CustomLog /var/www/verein/log/access.log combined
+</VirtualHost>
+```
+
 Hier bedient der Apache Server die Anfragen selbst. Wir sagen ihm nur, in welchem Verzeichnis er die Dateien finden kann, die er ausliefern soll, und in welches Verzeichnis er seine Logdateien schreiben soll.
 Im Verzeichnis /var/www/family/http sollte mindestens eine index.html - Datei zu finden sein, damit die Seite funktioniert. Diese Konfiguration würde auf http://meine-familie.ch und auch auf http://www.meine-familie.ch reagieren (Wegen der ServerAlias-Direktive)
 
@@ -73,8 +83,7 @@ Die anderen benötigten Sites können Sie analog definieren.
 Im Moment sind unsere Konfigurationen aber noch nicht aktiv. Wir aktivieren sie mit 
 
 ```bash
-sudo a2ensite cloud
-sudo a2ensite familienseite
+sudo a2ensite cloud familienseite vereinsseite
 sudo systemctl reload apache2
 ```
 
@@ -92,11 +101,9 @@ Wie kommt nun die Anfrage eines externen Browsers auf diese Seite?
 8. Wenn er ihn findet, sendet er die Anfrage weiter und  gibt dessen Antwort zurück. Wenn nicht, liefert er eine "Nicht gefunden" Antwort.
 
 Damit sind wir fast am Ende dieses Kurses. Aber mehr als nur ein Schönheitsfehler ist es heutzutage, eine Seite per http erreichbar zu machen. Standard ist die verschlüsselte Kommunikation via https bzw. SSL
-Dabei funktioniert praktisch alles gleich, nur dass der Port 443 statt 80 angesteuert wird, und ein Session-Key zur Verschlüsselung des gesamten Datenverkehrs erzeugt wird. Dieser Session-Key selber wird seinerseits zufällig erzeugt und durch ein public/private Schlüsselpaar verschlüsselt ausgetauscht: Der Server "beweist" mit dem Besitz eines privaten Schlüssels, der zu einem zertifizierten öffentlichen Schlüssel passt, dass er der ist, der er zu sein vorgibt, und die Verschlüsselung stellt sicher, dass niemand den Datenverkehr mitlesen kann.
+Dabei funktioniert praktisch alles gleich, nur dass der Port 443 statt 80 angesteuert wird, und die Kommunikation über ein Verfahren stattfindet, das einerseits die Identität des Servers sicherstellt und andererseits alle übermittelten Daten verschlüsselt. 
 
-SSL war früher eine teure Sache, weil man eine Firma brauchte, die prüfte, dass man der ist, der eine Seite rechtmässig betrieb, und dies mit einem Zertifikat des öffentlichen Schlüssels bestätigte. Diese Firmen ihrerseits mussten von allen Browser- und Betriebssystemherstellern als vertrauenswürdig anerkannt sein, damit diese ihre Zertifikate anerkannten. Dieser Aufwand hatte einen im Abonnement zu entrichtenden Preis.
-
-Privatleute behalfen sich darum oft mit einem self-signed certificate, zertifizierten sich ihre Identität also selber. Das ändert nichts an der Sicherheit der Verschlüsselung, sondern nur an der Identifikation des Servers. Wenn man den selber betreibt, oder den Betreiber persönlich kennt, ist das natürlich kein Problem. Nur geben alle modernen Browser dann immer diese unangenehmen Warnmeldungen heraus und wollen per Ausnahmeregelung überredet werden, sich trotzdem zu verbinden.
+SSL war früher eine teure Sache, weil man eine Firma brauchte, die prüfte, dass man der ist, der eine Seite rechtmässig betrieb, und dies mit einem Zertifikat des öffentlichen Schlüssels bestätigte. Eine ausführlichere Erläuterung zu SSL/HTTPS und Zertifikaten finden Sie [hier](/2019/05/tls).
 
 Heute ist alles ein wenig einfacher geworden: Es gibt jetzt [Letsencrypt](https://letsencrypt.org/).
 Das ist ein kostenloser Dienst, der Schlüssel für Webseiten zertifiziert, nachdem er sich beweisen lässt, dass der Antragssteller den Inhalt der Seite oder des Name-Servers manipulieren kann. Solche Tests sind automatisierbar. Alles was man dazu braucht, ist der Certbot
@@ -109,7 +116,7 @@ und dann:
 
 Certbot zeigt dann alle Sites an, die er in der laufenden Apache-Konfiguration finden kann, und Sie brauchen bloss anzugeben, welche Sie absichern wollen.
 
-Wenn alles gut geht, schreibt der certbot eine neue Konfiguration `etc/apache2/sites-available/familienseite-le-ssl.conf` und verändert die bestehende Konfiguration familienseite.conf so, dass Anfragen über http:// direkt auf https:// umgeleitet werden.
+Wenn alles gut geht, schreibt der certbot eine neue Konfiguration wie z.B. `/etc/apache2/sites-available/familienseite-le-ssl.conf` und verändert die bestehende Konfiguration familienseite.conf so, dass Anfragen über http:// direkt auf https:// umgeleitet werden.
 
 Wenn Sie sich jetzt wieder mit Ihrer Seite verbinden, werden Sie sehen, dass der Browser ein Schloss neben der Adresse anzeigt, und wenn Sie dieses Schloss anklicken, können Sie das Zertifikat ansehen, das Letsencrypt ausgestellt hat.
 
