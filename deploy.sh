@@ -1,4 +1,5 @@
 #! /bin/bash
+# usage: WEBSERVER=servername ./deploy.sh
 
 jekyll build
-rsync -avz --delete _site/ ${WEBSERVER}:/var/www/amateur/http/
+rsync -rvz --delete _site/ ${WEBSERVER}:/var/www/amateur/http/
