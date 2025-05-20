@@ -1,6 +1,6 @@
 # Einige Tipps
 
-## Dcoker-Compose Kommandos
+## Docker-Compose Kommandos
 
 ### Neustart
 
