@@ -31,3 +31,12 @@ Dazu einige Begriffe:
 ## Komplettlösung
 
 Die m.E. einfachste Lösung, ein eigenes Mailsystem aufzusetzen, ist [mailcow:dockerized](https://docs.mailcow.email), eine Sammlung von Docker-Containern, die alle benötigte Software unter einer brauchbaren Oberfläche vereinigt.
+
+Ein wesentlicher Teil der Konfiguration muss allerdings am Name-Server erfolgen. Das ist die Stelle, die Anfragen nach ihre-url.com auf Ihre IP-Adresse übersetzt. Häufig ist das Ihr Webspace-Provider, aber Sie können beim Domain-Registrar im Prinzip auch jeden anderen Server angeben, der die Aufgaben eines Nameservers übernehmen kann. Ich verwende gern die Dienste von [ZoneEdit](https://www.zoneedit.com/).
+Für die Mailzustellung muss man den MX-Record des Domain-Eintrags auf den zuständigen Mailserver legen.
+
+## Sicherheit
+
+DKIM dkim._domainkey-mysite.ch v=DKIM1;k=rsa;t=s;s=email;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQCAQEArpXtxxQCVMaR+X/htM0NyG5a83N7ay+Ru6B7MQmqtBX7GD6dUejkO4aasa+T8W19WRNk3zAcHciV3KnAbAL9ZkX/7BJctY2HE29kRTH+grUjU1RtMb3Ay10xaAYHEulN7TTrAmwtsI08sRituFaL4YVpCLSd+T71L57atrX9OisFJTG5TJuBbg92rThEgcFfr6pWxSVULfk3WVJILq+QQgRjvl8HhQXfcp/ynQc9Zcos7v0kKa7f87d0PcQYbnF7RbgPF8dDE4YQIDAQAB
+
+TXT @-mysite.ch v=spf1 a mx include:smtp.servicehoster.ch ~all
