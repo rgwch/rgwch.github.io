@@ -25,7 +25,7 @@ Dazu einige Begriffe:
 
 * Verbindungssicherheit: Wie die Verbindung vom Client (IMAP oder POP3) zum Server verschlüsselt wird. Gar nicht, SSL/TLS oder StartTLS. Letzteres ist eine Kombination aus den ersten beiden: Die Verbindung wird zuerst unverschlüsselt aufgebaut, und dann, wenn beide Seiten einverstanden sind, auf TLS verbessert. Achtung: Verschlüsselt heisst nur, dass der Dastenverkehr zwischen Provider und Empfänger verschlüsselt stattfindet. Zwischen dem Absender und dem Provider des Empfängers laufen Mails idR unverschlüsselt.
 
-* Authentisierung: Hat trotz der Verwandtschaft nichts mit der Verbindungssicherheit zu tun, sondern beschreibt, wie der Client sich gegenüber dem Server ausweist. Normales Passwort, verschlüsseltes Passwort oder eine indirekrte Lösung (Kerberos, OAuth etc.). Wenn die Verbinsung verschlüsselt ist, genügt Normales Passwort. Wenn die Verbindung unverschlüsselt ist, sollte das Passwort verschlüsselt übertragen werden..
+* Authentisierung: Hat trotz des ähnlichen Zwecks nichts mit der Verbindungssicherheit zu tun, sondern beschreibt, wie der Client sich gegenüber dem Server ausweist. Normales Passwort, verschlüsseltes Passwort oder eine indirekrte Lösung (Kerberos, OAuth etc.). Wenn die Verbinsung verschlüsselt ist, genügt Normales Passwort. Wenn die Verbindung unverschlüsselt ist, sollte das Passwort verschlüsselt übertragen werden..
 
 
 ## Komplettlösung
