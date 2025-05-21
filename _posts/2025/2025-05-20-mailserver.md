@@ -7,7 +7,7 @@ category:
 ---
 
 Ein eigener Mailserver ist meistens keine gute Idee: Man ist dann der Spamflut und permanenten Angriffen direkt ausgesetzt und wird ausserdem von professionellen Mailservern, mit denen man kommunizieren muss, um Mails auszutauschen, misstrauisch beäugt und oft abgelehnt.
-Fast immer ist es somit besser, mman nutzt für Mails entweder den Provider der Website, oder einen Maildienst wie gmail, gmx oder proton.
+Fast immer ist es somit besser, man nutzt für Mails entweder den Internet-Provider, oder den Anbieter der Website, oder einen Maildienst wie gmail, gmx oder proton.
 
 Wenn man allerdings seine Webseiten selbst gehostet hat und für Mailadressen den Namen einer eigenen Domain verwenden möchte, dann geht das nicht mehr mit jedem Provider. Und wenn man noch dazu etwa grossen Platzbedarf für seine Mails braucht, dann kann es auch schnell teuer werden.
 
@@ -23,7 +23,7 @@ Dazu einige Begriffe:
 
 * IMAP (Internet Message Access Protocol): Doent dazu, Mails zu lesen und zu bearbeiten, ohne sie zwingend herunterzuladen. Die Mails bleiben auf dem Server des Providers gespeichert, bis man sie explizit löscht.
 
-* Verbindungssicherheit: Wie die Verbindung vom Client (IMAP oder POP3) zum Server verschlüsselt wird. Gar nicht, SSL/TLS oder StartTLS. Letzteres ist eine Kombination aus den ersten beiden: Die Verbindung wird zuerst unvberschlüsselt aufgebaut, und dann, wenn beide Seiten einverstanden sind, auf TLS verbessert. Achtung: Verschlüsselt heisst nur, dass der Dastenverkehr zwischen Provider und Empfänger verschlüsselt stattfindet. Zwischen dem Absender und dem Provider des Empfängers laufen Mails idR unverschlüsselt.
+* Verbindungssicherheit: Wie die Verbindung vom Client (IMAP oder POP3) zum Server verschlüsselt wird. Gar nicht, SSL/TLS oder StartTLS. Letzteres ist eine Kombination aus den ersten beiden: Die Verbindung wird zuerst unverschlüsselt aufgebaut, und dann, wenn beide Seiten einverstanden sind, auf TLS verbessert. Achtung: Verschlüsselt heisst nur, dass der Dastenverkehr zwischen Provider und Empfänger verschlüsselt stattfindet. Zwischen dem Absender und dem Provider des Empfängers laufen Mails idR unverschlüsselt.
 
 * Authentisierung: Hat trotz der Verwandtschaft nichts mit der Verbindungssicherheit zu tun, sondern beschreibt, wie der Client sich gegenüber dem Server ausweist. Normales Passwort, verschlüsseltes Passwort oder eine indirekrte Lösung (Kerberos, OAuth etc.). Wenn die Verbinsung verschlüsselt ist, genügt Normales Passwort. Wenn die Verbindung unverschlüsselt ist, sollte das Passwort verschlüsselt übertragen werden..
 
@@ -37,6 +37,40 @@ Für die Mailzustellung muss man den MX-Record des Domain-Eintrags auf den zust�
 
 ## Sicherheit
 
-DKIM dkim._domainkey-mysite.ch v=DKIM1;k=rsa;t=s;s=email;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQCAQEArpXtxxQCVMaR+X/htM0NyG5a83N7ay+Ru6B7MQmqtBX7GD6dUejkO4aasa+T8W19WRNk3zAcHciV3KnAbAL9ZkX/7BJctY2HE29kRTH+grUjU1RtMb3Ay10xaAYHEulN7TTrAmwtsI08sRituFaL4YVpCLSd+T71L57atrX9OisFJTG5TJuBbg92rThEgcFfr6pWxSVULfk3WVJILq+QQgRjvl8HhQXfcp/ynQc9Zcos7v0kKa7f87d0PcQYbnF7RbgPF8dDE4YQIDAQAB
+Wie eingangs bereits geschrieben, gibt es Bestrebungen, den Mailverkehr besser gegen Spam und Malware zu sichern. Diese Bestrebungen erschweren unglücklicherweise der Betrieb eines eigenen Postausgangsservers (der Posteingangsserver, egal ob POP3 oder IMAP, ist hingegen kein Problem).
 
-TXT @-mysite.ch v=spf1 a mx include:smtp.servicehoster.ch ~all
+Dazu nochmal ein Exkurs: Wie funktioniert das Senden einer Mail?
+
+Wenn sie in Ihrem Mailprogramm auf "senden" klicken, dann nimmt das Mailprogramm mit dem in den Einstellungen festgelegten Postausgangsserver auf. Es identifiziert sich dafür meist mit einem Benutzernamen und Passwort (oder es hat sich, beim einige Zeit üblichen SMTP-after-POP-Konzept kurz zuvor mit einer POP-Session identifiziert). Dieser Postausgangsserver wird die Mail also üblicherweise problemlos entgegennehmen, sofern die "Personalien" stimmen. Knifflig wird der nächste Schritt: Der Postausgangsserver muss mit dem Posteingangsserver des Empfängers Kontakt aufnehmen, und diesem die Mail übergeben. Das kann möglicherweise über mehrere Zwischenstationen erfolgen, aber das änfert nichts am Konzept. Der Posteingangsserver wird die Mail oft nur dann entgegennehmen, wenn er den Sender für vertrauenswürdig hält, um seine User vor Spam und Malware zu schützen. Die Provider sind in der Umsetzung dieser Politik unterschiedlich streng. Wenn Sie einen eigenen Postausgangsserver betreiben, dann kann es durchaus sein, dass manche Epmfänger Ihre Mails akzeptieren, und andere genau dieselben Mails abweisen. Ein Beispiel für ein besonders strenges System ist Googles Gmail. Es ist recht schwierig, Gmail dazu zu bewegen, Mails von einem ihm unbekannten System entgegenzunehmen, insbesondere, wenn dieses System keine fixe IP hat.
+
+Hier zwei häufig gebrauchte Sicherheitsmechanismen:
+
+### DKIM: Domain Keys Identified Mail
+
+Hier wird im Nameserver-Eintrag der Domain ein öffentlicher Schlüssel im Feld DKIM abgelegt, der ungefähr so aussehen kann:
+
+```
+DKIM dkim._domainkey-mysite.ch v=DKIM1;k=rsa;t=s;s=email;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQCAQEArpXtxxQCVMaR+X/htM0NyG5a83N7ay+Ru6B7MQmqtBX7GD6dUejkO4aasa+T8W19WRNk3zAcHciV3KnAbAL9ZkX/7BJctY2HE29kRTH+grUjU1RtMb3Ay10xaAYHEulN7TTrAmwtsI08sRituFaL4YVpCLSd+T71L57atrX9OisFJTG5TJuBbg92rThEgcFfr6pWxSVULfk3WVJILq+QQgRjvl8HhQXfcp/ynQc9Zcos7v0kKa7f87d0PcQYbnF7RbgPF8dDE4YQIDAQAB
+```
+Der Mailserver hat den dazu passenden privaten Schlüssel und signiert jede Mail damit. Auf diese Weise kann der Eingangsserver des Empfängers der Mail die Signatur mit dem öffentlichen Schlüssel prüfen, und so dafür garantieren, dass die Mail tatsächlich von der Domain kommt, von der sie zu kommen scheint. Allerdings hilft das nicht zuverlässig gegen gefälschte "von"-Felder in der Mail selber, sondern nur gegen gefälschte Absender im "envelope" der Mail. Darum prüfen manche Empfänger auch, ob "von" veld und "envelope-sender" identisch sind.
+
+### SPF: Sender Policy Framework
+
+Auch das ist ein Eintrag im Nameserver der Domain, diesmal in einem TXT-Feld, das zum Beispiel so aussehen kann:
+
+```
+TXT @-mysite.ch v=spf1 a mx include:smtp.myhoster.mail ~all
+```
+
+Dieser Eintrag beschreibt, welche Mailserver überhaupt autorisiert sind, Mails für diese Domain zu senden. Damit kann man verhindern, dass ein Bösewicht einen eigenen Mailserver verwendet, um Fake-Accounts zu erstellen, die genauso aussehen, wie echte Mailadressen von echten Gegenübern.
+Leider ist dieser Eintrag meist der k.o. für Mailserver, die keine fixe IP haben. Viele Provider lehnen solche Mailserver nit einer IP aus dem Endkunden-bereich direkt ab.
+
+Sie können beide Funktionen mit einem mailcow-basierten Server nutzen, aber wie gesagt wird Ihnen das möglicherweise nicht viel helfen, wenn Sie keine fixe IP haben.
+
+## Lösungen:
+
+* Sie mieten einen fertigen Mailserver bei einem entsprechenden Dienst.
+
+* Sie mieten einen Webspace mit fixer IP für Ihren Mailserver. Allerdings ist damit noch nicht sichergestellt, dass alle möglichen Empfänger-Server Ihren Nailer für vertrauenswürdig genug halten.
+
+* Sie verwenden Ihren eigenen Maiserver nur als Posteingangsserver und senden Mails z.B. über den SMPT-Server Ihres Internet-Providers. Das kann man ja im Mailprogramm beliebig konfigurieren.
