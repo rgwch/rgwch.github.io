@@ -50,27 +50,30 @@ Vorgehen:
 * SSH-Server neigen dazu, die Verbindung ab und zu abzubrechen. Es empfiehlt sich daher, die Tunnelerstellung in ein watchdog-Skript einzubauen, etwa so:
 
 ```bash
-#! /bin/bash
+#!/bin/bash
 
-nc -z localhost 80
+# Set the ports to check on the remote server
+REMOTE_PORT=21234
+LOCAL_PORT=2456
+REMOTE_CONFIG=myserver
+REMOTE_URL=my.server.url
+
+# Check if the remote port is reachable
+nc -z "$REMOTE_URL" "$REMOTE_PORT" > /dev/null 2>&1
 
 if [ $? -eq 0 ]; then
-        echo alive at `date`
+    echo "Remote port $REMOTE_PORT is reachable at `date`" >>tunnel.log
 else
-        echo dead at `date` - $?  >>tunnel.log
-        cp wget.log wget.err.log
-        echo killing `/bin/pidof ssh`
-        kill `/bin/pidof ssh`
-        ssh -fN -R 80:localhost:80 ich@pseudoproxy.irgendwo
-     
-        if [[ $? -eq 0 ]]; then
-                echo Tunnel to proxy created successfully >>tunnel.log
-        else
-                echo An error occurred creating a tunnel to proxy. RC was $? >>tunnel.log
-  fi
-
+    echo "Remote port $REMOTE_PORT is unreachable at `date`" >>tunnel.log
+    # Attempt to create a new tunnel
+    ssh -o ServerAliveInterval=60 -o ServerAliveCountMax=3 -R "$REMOTE_PORT":localhost:$LOCAL_PORT $REMOTE_CONFIG -fN &
+    if [[ $? -eq 0 ]]; then
+        echo "New tunnel created successfully at `date`" >>tunnel.log
+    else
+        echo "Error creating new tunnel: $? at `date`" >>tunnel.log
+    fi
 fi
-
 ```
+
 Und dieses Watchdog-Skript über einen Cronjob zum Beispiel halbstündlich laufen zu lassen.
 
