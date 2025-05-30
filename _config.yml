@@ -40,5 +40,5 @@ redcarpet:
       "highlight",
     ]
 
-exclude: ["README.md", "LICENSE", "save", deploy.sh, new.js"]
+exclude: ["README.md", "LICENSE", "save", "deploy.sh", "new.js", "preview.sh"]
 plugins: [jekyll-paginate]
