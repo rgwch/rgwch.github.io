@@ -7,7 +7,7 @@ category: KI
 ---
 
 Vielleicht haben die vorherigen Kapitel Sie ja neugierig auf weitere KI-Experimente gemacht. Ein ganz heisser Kandidat für nähere Beschäftigung wird vermutlich Bilderstellung mit KI sein - zumindest, sobald sie einmal hineingeschnuppert haben.
-Das Hineinschnuppern ist allerdings nicht ganz einfach, denn die Platzhirsche [ChatGPT 4o](https://chatgpt.com/), [Midjourney](https://www.midjourney.com/explore?tab=top), [Firefly](https://www.adobe.com/ch_de/products/firefly/features/text-to-image.html) und wie sie alle heissen, sind für simples Ausprobierne zu teuer. Sie erlauben zwar kostenlopse Nutzung, aber dann ist die Erstellung der Bilder sehr langsam oder kompliziert oder auf wenige Bilder begrenzt.
+Das Hineinschnuppern ist allerdings nicht ganz einfach, denn die Platzhirsche [ChatGPT 4o](https://chatgpt.com/), [Midjourney](https://www.midjourney.com/explore?tab=top), [Firefly](https://www.adobe.com/ch_de/products/firefly/features/text-to-image.html) und wie sie alle heissen, sind für simples Ausprobieren zu teuer. Sie erlauben zwar kostenlose Nutzung, aber dann ist die Erstellung der Bilder sehr langsam oder kompliziert oder auf wenige Bilder begrenzt.
 
 Vielleicht erst mal eine Idee, was man zum Beispiel machen kann: Eine Möglichkeit von Bildgeneratoren ist, aus einer Textbeschreibung ein Bild zu machen. Zum Beispiel: 
 
