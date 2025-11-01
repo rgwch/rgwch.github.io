@@ -38,4 +38,6 @@ Wenn alles geklappt hat, öffnet sich nach der (Durchaus einige Zeit dauernden) 
 
 ![WebUI](/images/webui.png)
 
-Sie erkennen hier eine Menge etwas verwirrende Felder und Einstellmöglichkeiten. Zunächst sehen Sie ganz oben, dass der Browser offenbar die Adresse `http://localhost:7860` geöffnet hat. Das ist darum interessant, weil es bedeutet, dass Sie Stable-Diffusion nicht nur an dem Computer nutzen können, auf dem das Programm läuft, sondern an jedem, der diesen Computer erreichen kann. 
+Sie erkennen hier eine Menge etwas verwirrende Felder und Einstellmöglichkeiten. Zunächst sehen Sie ganz oben, dass der Browser offenbar die Adresse `http://localhost:7860` geöffnet hat. Das ist darum interessant, weil es bedeutet, dass Sie Stable-Diffusion nicht nur an dem Computer nutzen können, auf dem das Programm läuft, sondern an jedem, der diesen Computer erreichen kann. Allerdings sollten Sie dann das webui mit `./webui --listen` starten.
+
+Okay, seit ich diesen Artikel angefangen habe, habe ich mich ein wenig mit Bildgenerierung befasst und eingesehen: Das sprengt den Rahmen eines solchen Beitrags bei weitem. Die Möglichkeiten sind unendlich. Ich schlage vor, sich zum Beispiel mit dieser Seite zu befassen: [Stable Diffusion beginners guide](https://stable-diffusion-art.com/beginners-guide/)
