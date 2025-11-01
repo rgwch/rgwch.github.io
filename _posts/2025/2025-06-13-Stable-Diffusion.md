@@ -38,4 +38,4 @@ Wenn alles geklappt hat, öffnet sich nach der (Durchaus einige Zeit dauernden) 
 
 ![WebUI](/images/webui.png)
 
-Sie erkennen hier ine Menge etwas verwirrende Felder und Einstellmöglichkeiten. Zunächst sehen Sie ganz oben, dass der Browser offenbar die Adresse `http://localhost:7860` geöffnet hat. Das ist darum interessant, weil es bedeutet, dass Sie Stable-Diffusion nicht nur an dem Computer nutzen können, auf dem das Programm läuft, sondern an jedem, der diesen Computer erreichen kann. Wenn Stable-Diffusion 
+Sie erkennen hier eine Menge etwas verwirrende Felder und Einstellmöglichkeiten. Zunächst sehen Sie ganz oben, dass der Browser offenbar die Adresse `http://localhost:7860` geöffnet hat. Das ist darum interessant, weil es bedeutet, dass Sie Stable-Diffusion nicht nur an dem Computer nutzen können, auf dem das Programm läuft, sondern an jedem, der diesen Computer erreichen kann. Wenn Stable-Diffusion 
