@@ -42,5 +42,11 @@ sudo wg-quick down praxis
 
 Dank der Effizienz des RDP Protokolls können Sie so von zuhause aus über eine halbwegs schnelle DSL- oder 4G-Verbindung fast genau so mit derart bereitgestellten Windows-Programmen arbeiten, wie von einem Praxis-PC aus.
 
-Achtung: Wählen Sie, wenn Sie fertig sind, nicht "herunterfahren" im Windows-Fenster, sondern "Disconnect", um den Container nich ganz zu stoppen.
+Achtung: Wählen Sie, wenn Sie fertig sind, nicht "Shut down" im Windows-Fenster, sondern "Disconnect", um den Container nich ganz zu stoppen.
 
+Hier ein Beispiel des Windows-11-Desktops in einem Fenster eines Linux KDE Desktops:
+
+![Windows in Linux](/images/windows_linux.jpg)
+
+
+Schlussbemerkung: Dieses Windows ist natürlich nicht aktiviert. Microsoft ist derzeit recht tolerant mit nicht aktivierten Windows-11-Installationen und vertreibt die Installer ja auch selber kostenlos. Aber das kann sich natürlich jederzeit ändern. Sie können ggf. einen key kaufen (Bei Microsoft selbst oder bei einem der vielen erheblich günstigeren Drittverkäufer, wobei es dort leider auch schwarze Schafe gibt), und Ihr Linux-Windows mit diesem key ganz nornal aktivieren.
