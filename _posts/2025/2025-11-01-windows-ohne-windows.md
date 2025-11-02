@@ -14,7 +14,7 @@ Und verblüffenderweise ist das Ganze völlig legal. Sie brauchen keine geheimni
 
 Am Einfachsten geht die Installation unter Linux mit [WinBoat](https://www.winboat.app/). Der Installer prüft, ob alle Voraussetzungen gegeben sind. Der Prozessor muss Virtualisierung beherrschen (das gilt heute für fast alle), und die Virtualisierung muss im Bios eingeschaltet sein. Vermutlich müssen Sie dann noch freeRDP installieren (`sudo apt install freerdp3-x11` unter Ubuntu). Den Rest erledigt WinBoat vollautomatisch. Es installiert z.B. Windows 11 von der offiziellen Microsoft-Seite. (Wählen Sie die englische Version, die deutsche scheint nicht zu funktionieren). Danach Läuft Windows 11 auf Ihrem Linux-Computer. Wenn Sie mehrere Bildschirme haben, können Sie auf einem Windows und auf einem Linux anzeigen. In diesem Windows können Sie installieren, was Sie wollen. Zum Beispiel funktioniert Microsoft Office durchaus, ebenso Elexis. Und als Besonderheit können Sie solche Programme auch direkt auf dem Linux-Desktop ausführen. statt in einem Windows-Fenster.
 
-Leider ist WinBoat etwas unflexibel, was die Grüsse des Windows-Fensters angeht: Es belegt immer einen ganzen Bildchirm. Wenn Sie das nicht wollen, können Sie freerdp auch unabhängig von WinBoat starten, sofern der Container läuft:
+Leider ist WinBoat etwas unflexibel, was die Grösse des Windows-Fensters angeht: Es belegt immer einen ganzen Bildchirm. Wenn Sie das nicht wollen, können Sie freerdp auch unabhängig von WinBoat starten, sofern der Container läuft:
 
 `xfreerdp3 /u:Ihrname /p:Ihrpasswort /v:localhost +dynamic-resolution`
 
@@ -42,7 +42,7 @@ sudo wg-quick down praxis
 
 Dank der Effizienz des RDP Protokolls können Sie so von zuhause aus über eine halbwegs schnelle DSL- oder 4G-Verbindung fast genau so mit derart bereitgestellten Windows-Programmen arbeiten, wie von einem Praxis-PC aus.
 
-Achtung: Wählen Sie, wenn Sie fertig sind, nicht "herunterfahren" im Windows-Fenster, sondern "Disconnect", um den Container nich ganz zu stoppen.
+Achtung: Wählen Sie, wenn Sie fertig sind, nicht "Shut down" im Windows-Fenster, sondern "Disconnect", um den Container nich ganz zu stoppen.
 
 ## Noch ein Tip
 
@@ -72,3 +72,10 @@ Wenn Sie sind wie ich, dann reservieren Sie am Anfang viel zu wenig Platz für d
 * Voilà, Sie haben eine grössere Platte, ohne Datenverlust oder Neuinstallation.
 
 Das Ganze geht schneller, als es gedauert hat, es hier aufzuschreiben.
+
+Hier ein Beispiel des Windows-11-Desktops in einem Fenster eines Linux KDE Desktops:
+
+![Windows in Linux](/images/windows_linux.jpg)
+
+
+Schlussbemerkung: Dieses Windows ist natürlich nicht aktiviert. Microsoft ist derzeit recht tolerant mit nicht aktivierten Windows-11-Installationen und vertreibt die Installer ja auch selber kostenlos. Aber das kann sich natürlich jederzeit ändern. Sie können ggf. einen key kaufen (Bei Microsoft selbst oder bei einem der vielen erheblich günstigeren Drittverkäufer, wobei es dort leider auch schwarze Schafe gibt), und Ihr Linux-Windows mit diesem key ganz nornal aktivieren.
