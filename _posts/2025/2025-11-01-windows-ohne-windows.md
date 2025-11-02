@@ -24,15 +24,20 @@ Mit `xfreerdp3 /u:Ihrname /p:Ihrpasswort /v:localhost -w:1280 -h:1024 /scale:140
 
 Sie können Windows sogar in einem gewöhnliche Brower darstellen, indem Sie ihn auf `http://127.0.0.1:8006` richten. Allerdings ist dann die Darstellung deutlich träger, als mit RDP. 
 
+Hier ein Beispiel des Windows-11-Desktops in einem Fenster eines Linux KDE Desktops:
+
+![Windows in Linux](/images/windows_linux.jpg)
+
 ## Windows ohne Bildschirm
 
 Wie oben geschrieben braucht der Computer, auf dem Ihr Docker-Windows läuft, keinen Bildschirm. Wenn WinBoat fertig ist, hat es einen Docker-container erstellt, den Sie zum Beispiel mit `docker start WinBoat` auch von einem entfernten Terminal aus starten können. (Um genau zu sein: WinBoat installiert im Hintergrund ein anderes Projekt: [dockur/windows](https://github.com/dockur/windows), das einen solchen Container erstellt.) Und damit haben Sie den perfekten Fernzugriff auf Ihre Praxis:
 
-``` 
+```bash 
 #! /bin/bash
 
-# Mit WireGuard (separat zu installieren) ein VPN zur Praxis öffnen
+# Z.B. mit WireGuard (separat zu installieren) ein VPN zur Praxis öffnen. Sicherheit geht vor.
 sudo wg-quick up praxis
+
 # FreeRDP starten und verbinden
 xfreerdp3 /u:Ihrname /p:Ihrpassword /v:praxisserver +dynamic-resolution
 
@@ -42,11 +47,11 @@ sudo wg-quick down praxis
 
 Dank der Effizienz des RDP Protokolls können Sie so von zuhause aus über eine halbwegs schnelle DSL- oder 4G-Verbindung fast genau so mit derart bereitgestellten Windows-Programmen arbeiten, wie von einem Praxis-PC aus.
 
-Achtung: Wählen Sie, wenn Sie fertig sind, nicht "Shut down" im Windows-Fenster, sondern "Disconnect", um den Container nich ganz zu stoppen.
+Achtung: Wählen Sie, wenn Sie fertig sind, nicht "Shut down" im Windows-Fenster, sondern "Disconnect", um den Container nicht ganz zu stoppen.
 
 ## Noch ein Tip
 
-Wenn Sie sind wie ich, dann reservieren Sie am Anfang viel zu wenig Platz für die Windows-Festplatte. Die von WinBoat vorgeschlagenen 30GB reichen jedenfalls nicht weit. Gut ist: Man kann die Platte vergrössern.
+Wenn Sie sind wie ich, dann reservieren Sie am Anfang viel zu wenig Platz für die Windows-Festplatte. Die von WinBoat vorgeschlagenen 30GB reichen jedenfalls nicht weit. Mit Java, Elexis und Office ist sie voll. Gut ist: Man kann die Platte ohne Datenverlust vergrössern (Aber natürlich sollten Sie trozdem alles Wichtige sichern, bevor Sie hier weitermachen).
 
 * Finden Sie die zuständige docker-compose.yml: `docker inspect WinBoat|grep compose`
 * Gehen Sie in dieses Verzeichnis, z.B.  `cd ~/.winboat` und beenden Sie den Windows-Comtainer völlig: `docker compose down`
@@ -73,9 +78,7 @@ Wenn Sie sind wie ich, dann reservieren Sie am Anfang viel zu wenig Platz für d
 
 Das Ganze geht schneller, als es gedauert hat, es hier aufzuschreiben.
 
-Hier ein Beispiel des Windows-11-Desktops in einem Fenster eines Linux KDE Desktops:
-
-![Windows in Linux](/images/windows_linux.jpg)
 
 
-Schlussbemerkung: Dieses Windows ist natürlich nicht aktiviert. Microsoft ist derzeit recht tolerant mit nicht aktivierten Windows-11-Installationen und vertreibt die Installer ja auch selber kostenlos. Aber das kann sich natürlich jederzeit ändern. Sie können ggf. einen key kaufen (Bei Microsoft selbst oder bei einem der vielen erheblich günstigeren Drittverkäufer, wobei es dort leider auch schwarze Schafe gibt), und Ihr Linux-Windows mit diesem key ganz nornal aktivieren.
+## Schlussbemerkung
+Dieses Windows ist natürlich nicht aktiviert. Microsoft ist derzeit recht tolerant mit nicht aktivierten Windows-11-Installationen und vertreibt die Installer ja auch selber kostenlos. Aber das kann sich natürlich jederzeit ändern. Sie können ggf. einen key kaufen (Bei Microsoft selbst oder bei einem der vielen erheblich günstigeren Drittverkäufer, wobei es dort leider auch schwarze Schafe gibt), und Ihr Linux-Windows mit diesem key ganz nornal aktivieren.
