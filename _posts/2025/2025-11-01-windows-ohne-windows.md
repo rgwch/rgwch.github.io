@@ -14,7 +14,7 @@ Und verblüffenderweise ist das Ganze völlig legal. Sie brauchen keine geheimni
 
 Am Einfachsten geht die Installation unter Linux mit [WinBoat](https://www.winboat.app/). Der Installer prüft, ob alle Voraussetzungen gegeben sind. Der Prozessor muss Virtualisierung beherrschen (das gilt heute für fast alle), und die Virtualisierung muss im Bios eingeschaltet sein. Vermutlich müssen Sie dann noch freeRDP installieren (`sudo apt install freerdp3-x11` unter Ubuntu). Den Rest erledigt WinBoat vollautomatisch. Es installiert z.B. Windows 11 von der offiziellen Microsoft-Seite. (Wählen Sie die englische Version, die deutsche scheint nicht zu funktionieren). Danach Läuft Windows 11 auf Ihrem Linux-Computer. Wenn Sie mehrere Bildschirme haben, können Sie auf einem Windows und auf einem Linux anzeigen. In diesem Windows können Sie installieren, was Sie wollen. Zum Beispiel funktioniert Microsoft Office durchaus, ebenso Elexis. Und als Besonderheit können Sie solche Programme auch direkt auf dem Linux-Desktop ausführen. statt in einem Windows-Fenster.
 
-Leider ist WinBoat etwas unflexibel, was die Grüsse des Windows-Fensters angeht: Es belegt immer einen ganzen Bildchirm. Wenn Sie das nicht wollen, können Sie freerdp auch unabhängig von WinBoat starten, sofern der Container läuft:
+Leider ist WinBoat etwas unflexibel, was die Grösse des Windows-Fensters angeht: Es belegt immer einen ganzen Bildchirm. Wenn Sie das nicht wollen, können Sie freerdp auch unabhängig von WinBoat starten, sofern der Container läuft:
 
 `xfreerdp3 /u:Ihrname /p:Ihrpasswort /v:localhost +dynamic-resolution`
 
