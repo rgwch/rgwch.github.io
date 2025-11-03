@@ -53,6 +53,14 @@ Achtung: Wählen Sie, wenn Sie fertig sind, nicht "Shut down" im Windows-Fenster
 
 Natürlich können Sie auch von einem Windows-Computer auf Ihr virtuelles Windows zugreifen. Geben Sie dort einfach `mstsc` ein. Windows erfragt dann die Verbindungsdaten.
 
+## Elexis auf Android
+
+Wenn Sie schon immer mal Elexis auf Ihrem Handy laufen lassen wollten, auch das geht:
+
+![Elexis auf Android](/images/android.jpg)
+
+(Ja, das ist Elexis auf Windows 11, ferngesteuert mit "Windows App" auf einem Android Handy über ein VPN).
+
 ## Noch ein Tip
 
 Wenn Sie sind wie ich, dann reservieren Sie am Anfang viel zu wenig Platz für die Windows-Festplatte. Die von WinBoat vorgeschlagenen 30GB reichen jedenfalls nicht weit. Mit Java, Elexis und Office ist sie voll. Gut ist: Man kann die Platte ohne Datenverlust vergrössern (Aber natürlich sollten Sie trozdem alles Wichtige sichern, bevor Sie hier weitermachen).
