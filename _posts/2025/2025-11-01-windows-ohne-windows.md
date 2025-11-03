@@ -49,12 +49,16 @@ Dank der Effizienz des RDP Protokolls können Sie so von zuhause aus über eine 
 
 Achtung: Wählen Sie, wenn Sie fertig sind, nicht "Shut down" im Windows-Fenster, sondern "Disconnect", um den Container nicht ganz zu stoppen.
 
+## Windows auf Windows
+
+Natürlich können Sie auch von einem Windows-Computer auf Ihr virtuelles Windows zugreifen. Geben Sie dort einfach `mstsc` ein. Windows erfragt dann die Verbindungsdaten.
+
 ## Noch ein Tip
 
 Wenn Sie sind wie ich, dann reservieren Sie am Anfang viel zu wenig Platz für die Windows-Festplatte. Die von WinBoat vorgeschlagenen 30GB reichen jedenfalls nicht weit. Mit Java, Elexis und Office ist sie voll. Gut ist: Man kann die Platte ohne Datenverlust vergrössern (Aber natürlich sollten Sie trozdem alles Wichtige sichern, bevor Sie hier weitermachen).
 
 * Finden Sie die zuständige docker-compose.yml: `docker inspect WinBoat|grep compose`
-* Gehen Sie in dieses Verzeichnis, z.B.  `cd ~/.winboat` und beenden Sie den Windows-Comtainer völlig: `docker compose down`
+* Gehen Sie in dieses Verzeichnis, z.B.  `cd ~/.winboat` und beenden Sie den Windows-Container völlig: `docker compose down`
 * `nano docker-compose.yml`
 * Finden Sie die Zeile DISK_SIZE und ändern Sie sie in z.B. 60G. Achten Sie darauf, keine Einrückungen zu verändern.
 * ^O ^X
@@ -72,7 +76,7 @@ Wenn Sie sind wie ich, dann reservieren Sie am Anfang viel zu wenig Platz für d
 * delete partition override
 * Starten Sie Windows neu
 * Öffnen Sie wieder den Festplattenmanager
-* Jetzt sollte der Raum hinter der Windows-(C) Partition frei sein.
+* Jetzt sollte der Raum hinter der Windows(C) - Partition frei sein.
 * Rechtsklick auf die Windows-Partition und "extend"
 * Voilà, Sie haben eine grössere Platte, ohne Datenverlust oder Neuinstallation.
 
@@ -81,4 +85,5 @@ Das Ganze geht schneller, als es gedauert hat, es hier aufzuschreiben.
 
 
 ## Schlussbemerkung
+
 Dieses Windows ist natürlich nicht aktiviert. Microsoft ist derzeit recht tolerant mit nicht aktivierten Windows-11-Installationen und vertreibt die Installer ja auch selber kostenlos. Aber das kann sich natürlich jederzeit ändern. Sie können ggf. einen key kaufen (Bei Microsoft selbst oder bei einem der vielen erheblich günstigeren Drittverkäufer, wobei es dort leider auch schwarze Schafe gibt), und Ihr Linux-Windows mit diesem key ganz nornal aktivieren.
