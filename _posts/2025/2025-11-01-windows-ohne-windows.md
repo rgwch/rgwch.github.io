@@ -80,7 +80,7 @@ Wenn Sie sind wie ich, dann reservieren Sie am Anfang viel zu wenig Platz für d
 * list disk
 * select disk 1
 * list part
-* select part 3 (oder welche auch immer die störende Parition ist)
+* select part 3 (oder welche auch immer die störende Partition ist)
 * delete partition override
 * Starten Sie Windows neu
 * Öffnen Sie wieder den Festplattenmanager
