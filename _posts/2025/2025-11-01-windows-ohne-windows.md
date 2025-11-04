@@ -24,14 +24,18 @@ Mit `xfreerdp3 /u:Ihrname /p:Ihrpasswort /v:localhost -w:1280 -h:1024 /scale:140
 
 Sie können Windows sogar in einem gewöhnliche Brower darstellen, indem Sie ihn auf `http://127.0.0.1:8006` richten. Allerdings ist dann die Darstellung deutlich träger, als mit RDP. 
 
+Hier ein Beispiel des Windows-11-Desktops in einem Fenster eines Linux KDE Desktops:
+
+![Windows in Linux](/images/windows_linux.jpg)
+
 ## Windows ohne Bildschirm
 
 Wie oben geschrieben, braucht der Computer, auf dem Ihr Docker-Windows läuft, keinen Bildschirm. Wenn WinBoat fertig ist, hat es einen Docker-Container erstellt, den Sie zum Beispiel mit `docker start WinBoat` auch von einem entfernten Terminal aus starten können. (Um genau zu sein: WinBoat installiert im Hintergrund ein anderes Projekt: [dockur/windows](https://github.com/dockur/windows), das einen solchen Container erstellt.) Und damit haben Sie den perfekten Fernzugriff auf Ihre Praxis:
 
-``` 
+```bash 
 #! /bin/bash
 
-# Mit WireGuard (separat zu installieren) ein VPN zur Praxis öffnen
+# Z.B. mit WireGuard (separat zu installieren) ein VPN zur Praxis öffnen. Sicherheit geht vor.
 sudo wg-quick up praxis
 
 # FreeRDP starten und verbinden
@@ -43,11 +47,51 @@ sudo wg-quick down praxis
 
 Dank der Effizienz des RDP Protokolls können Sie so von zuhause aus über eine halbwegs schnelle DSL- oder 4G-Verbindung fast genau so mit derart bereitgestellten Windows-Programmen arbeiten, wie von einem Praxis-PC aus.
 
-Achtung: Wählen Sie, wenn Sie fertig sind, nicht "Shut down" im Windows-Fenster, sondern "Disconnect", um den Container nich ganz zu stoppen.
+Achtung: Wählen Sie, wenn Sie fertig sind, nicht "Shut down" im Windows-Fenster, sondern "Disconnect", um den Container nicht ganz zu stoppen.
 
-Hier ein Beispiel des Windows-11-Desktops in einem Fenster eines Linux KDE Desktops:
+## Windows auf Windows
 
-![Windows in Linux](/images/windows_linux.jpg)
+Natürlich können Sie auch von einem Windows-Computer auf Ihr virtuelles Windows zugreifen. Geben Sie dort einfach `mstsc` ein. Windows erfragt dann die Verbindungsdaten.
+
+## Elexis auf Android
+
+Wenn Sie schon immer mal Elexis auf Ihrem Handy laufen lassen wollten, auch das geht:
+
+![Elexis auf Android](/images/android.jpg)
+
+(Ja, das ist Elexis auf Windows 11, ferngesteuert mit "Windows App" auf einem Android Handy über ein VPN).
+
+## Noch ein Tip
+
+Wenn Sie sind wie ich, dann reservieren Sie am Anfang viel zu wenig Platz für die Windows-Festplatte. Die von WinBoat vorgeschlagenen 30GB reichen jedenfalls nicht weit. Mit Java, Elexis und Office ist sie voll. Gut ist: Man kann die Platte ohne Datenverlust vergrössern (Aber natürlich sollten Sie trozdem alles Wichtige sichern, bevor Sie hier weitermachen).
+
+* Finden Sie die zuständige docker-compose.yml: `docker inspect WinBoat|grep compose`
+* Gehen Sie in dieses Verzeichnis, z.B.  `cd ~/.winboat` und beenden Sie den Windows-Container völlig: `docker compose down`
+* `nano docker-compose.yml`
+* Finden Sie die Zeile DISK_SIZE und ändern Sie sie in z.B. 60G. Achten Sie darauf, keine Einrückungen zu verändern.
+* ^O ^X
+* `docker compose up -d`
+* Verbinden Sie sich wieder mit Windows
+* Drücken Sie die Windows-Taste und geben Sie ein "Disk". Wählen Sie das Applet "create and format hardisk partitions".
+* Auf Ihrer Festplatte sollte nun ein freier Bereich enstanden sein, in den Sie Windows (C) erweitern können. Dann war das schon alles. Aber:
+* Eventuell ist eine Recovery Partition im Weg. Die brauchen Sie nicht wirklich, da Sie dieses Windows ja jederzeit in wenigen Minuten regenerieren können. Allerdings ist sie gegen normales Löschen geschützt.
+* Starten Sie Powershell
+* Diskpart
+* list disk
+* select disk 1
+* list part
+* select part 3 (oder welche auch immer die störende Parition ist)
+* delete partition override
+* Starten Sie Windows neu
+* Öffnen Sie wieder den Festplattenmanager
+* Jetzt sollte der Raum hinter der Windows(C) - Partition frei sein.
+* Rechtsklick auf die Windows-Partition und "extend"
+* Voilà, Sie haben eine grössere Platte, ohne Datenverlust oder Neuinstallation.
+
+Das Ganze geht schneller, als es gedauert hat, es hier aufzuschreiben.
 
 
-Schlussbemerkung: Dieses Windows ist natürlich nicht aktiviert. Microsoft ist derzeit recht tolerant mit nicht aktivierten Windows-11-Installationen und vertreibt die Installer ja auch selber kostenlos. Aber das kann sich natürlich jederzeit ändern. Sie können ggf. einen key kaufen (Bei Microsoft selbst oder bei einem der vielen erheblich günstigeren Drittverkäufer, wobei es dort leider auch schwarze Schafe gibt), und Ihr Linux-Windows mit diesem key ganz nornal aktivieren.
+
+## Schlussbemerkung
+
+Dieses Windows ist natürlich nicht aktiviert. Microsoft ist derzeit recht tolerant mit nicht aktivierten Windows-11-Installationen und vertreibt die Installer ja auch selber kostenlos. Aber das kann sich natürlich jederzeit ändern. Sie können ggf. einen key kaufen (Bei Microsoft selbst oder bei einem der vielen erheblich günstigeren Drittverkäufer, wobei es dort leider auch schwarze Schafe gibt), und Ihr Linux-Windows mit diesem key ganz nornal aktivieren.
