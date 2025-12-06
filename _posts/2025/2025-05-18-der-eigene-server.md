@@ -4,7 +4,7 @@ title: Der eigene Web- und App-Server
 date: 2025-05-18
 tags: [Website, Apache, Proxy, Server]
 draft: true
-category: Administration
+category: administration
 ---
 Eine Website zu publizieren, ist einfach: Es gibt viele Anbieter, die entsprechende Hosting-Angebote für wenig Geld bereitstellen, und oft auch verschiedenene Hilfen zum Erstellen der Seiten anbieten. Wenn man allerdings eine grössere Anzahl von unabhängigen Sites hosten möchte, braucht man entweder mehrere Anbieter, oder ein "stärkeres" Angebot, welches mehrere Domains mit mehreren Urls erlaubt.
 Noch schwieriger wird es, wenn man WebApps hosten möchte, zum Beispiel eine eigene Cloud mit OwnCloud oder Nextcloud, oder eigene NodeJS-Apps. Dann braucht man einen Hoster, der es erlaubt, NodeJS und/oder Docker laufen zu lassen, und der genügend Speicher bereitstellt. Da wird die Luft schon dünner, und immer wieder stösst man auf unerwartete Beschränkungen und recht hohe Kosten.
