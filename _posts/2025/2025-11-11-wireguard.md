@@ -13,7 +13,7 @@ Hier zeige ich kurz die Installation von Wireguard, einem modernen und doch rech
 
 ## Grundsätzlich
 
-Eine Wireguard-Verbindung ist grundsätzlich eine Vrebindung zwischen "Peers", also gleichberechtigten Partnern. Es gibt keine strikte Rollenverteilung, daher ist die Konfiguration auf Server und clients jeweils sehr ähnlich:
+Eine Wireguard-Verbindung ist grundsätzlich eine Verbindung zwischen "Peers", also gleichberechtigten Partnern. Es gibt keine strikte Rollenverteilung, daher ist die Konfiguration auf Server und clients jeweils sehr ähnlich:
 Jeder Peer hat einen privaten Schlüssel, den nur er selber kennt, und einen öffentlichen Schlüssel, der zu diesem privaten Schlüssel passt, und den jeder kennen darf. (Das Prinzip der asymmetrischen Verschlüsselung habe ich [früher](/2019/05/tls)) ausgeführt).
 Die Konfiguration des Peers, der als Server dienen soll, unterscheidet sich nur darin, dass zusätzlich eine Netzwerkbrücke eingerichtet werden muss, die den verbindenden Peers Adressen aus dem lokalen Netzwerk zuweist.
 
