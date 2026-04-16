@@ -101,3 +101,10 @@ ST-Strecke und T-Welle sind normal. Es gibt keine offensichtlichen Anomalien.
 
 **Wichtiger Hinweis:** Diese Befundung ist basierend auf den bereitgestellten Informationen und sollte von einem qualifizierten Arzt interpretiert 
 werden.  Es ist wichtig, die klinische Situation des Patienten zu berücksichtigen, um eine korrekte Diagnose zu stellen.
+
+## Installationstip
+
+Nach der Installation mit `curl -fsSL https://ollama.com/install.sh | sh`  (übrigens kann dieselbe Zeile auch zum Update verwendet werden), lauscht Ollama standardmässig nur am loopback Adapter (localhost bzw. 127.0.0.1). In der Regel braucht man aber nur einen Rechner mit viel CPU und GPU-Kapazität in der Praxis, so dass es praktischer wäre, man könnte einen zentral laufenden Ollama von anderen PCs im LAN aus erreichen.
+
+Das geht, indem man in  `/etc/systemd/system/ollama.service`                                                         
+folgende Zeile im Block [Service] einfügt: `Environment="OLLAMA_HOST=0.0.0.0"` (Auch wenn bereits eine Environment Zeile dort steht: Einfach eine weitere Zeile einfügen.), und dann Ollama mit `sudo systemctl restart ollama` neu startet.
