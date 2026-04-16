@@ -72,3 +72,5 @@ Okay, ich habe das laterale Bild erhalten. Hier ist meine Befundung:
     *   Keine sichtbaren Frakturen oder andere pathologische Veränderungen.
 *   **Klüver-Bell-Sign:** Ich sehe keine klaren Hinweise auf ein Klüver-Bell-Sign (eine mögliche Anzeichen für eine Pneumonie).
 
+--------
+Wie man sieht, klingt die KI relativ selbstsicher, schickt aber einen Disclaimer nach. Und natürlich ist das so: Man muss das Bild immer noch selbst befunden. Aber die KI hilft einem erstens, die Dokumentationspflicht mit der gebührenden Ausführlichkeit zu erfüllen, und zweitens, vielleicht sieht sie ja auch mal was, was wir übersehen haben.
