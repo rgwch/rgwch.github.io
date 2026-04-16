@@ -74,3 +74,30 @@ Okay, ich habe das laterale Bild erhalten. Hier ist meine Befundung:
 
 --------
 Wie man sieht, klingt die KI relativ selbstsicher, schickt aber einen Disclaimer nach. Und natürlich ist das so: Man muss das Bild immer noch selbst befunden. Aber die KI hilft einem erstens, die Dokumentationspflicht mit der gebührenden Ausführlichkeit zu erfüllen, und zweitens, vielleicht sieht sie ja auch mal was, was wir übersehen haben.
+
+Jetzt mal was anderes:
+
+<span style="color:green">&gtbitte befunde dieses EKG: '/home/user/Bilder/Bildschirmfotos/Bildschirmfoto vom 2026-04-16 10-34-58.png' </<span>><br />
+
+Added image '/home/gerry/Bilder/Bildschirmfotos/Bildschirmfoto vom 2026-04-16 10-34-58.png'
+Hier ist die Befundung des EKG:
+
+**Befunde:**
+
+*   **Rhythmus:** Der Rhythmus ist regelmässig.
+*   **Frequenz:** Die Herzfrequenz beträgt 72 Schläge pro Minute.
+*   **EKG-Achse:** Die EKG-Achse ist normal.
+*   **PR-Zeit:** Die PR-Zeit ist normal.
+*   **QRS-Komplex:** Der QRS-Komplex ist normal.
+*   **QT-Zeit:** Die QT-Zeit ist normal.
+*   **ST-Strecke:** Die ST-Strecke ist normal.
+*   **T-Welle:** Die T-Welle ist normal.
+*   **Anmerkungen:** Keine offensichtlichen Anomalien.
+
+**Zusammenfassung:**
+
+Das EKG zeigt einen regelmässigen Herzrhythmus mit einer Herzfrequenz von 72 Schlägen pro Minute. Die EKG-Achse, PR-Zeit, QRS-Komplex, QT-Zeit, 
+ST-Strecke und T-Welle sind normal. Es gibt keine offensichtlichen Anomalien.
+
+**Wichtiger Hinweis:** Diese Befundung ist basierend auf den bereitgestellten Informationen und sollte von einem qualifizierten Arzt interpretiert 
+werden.  Es ist wichtig, die klinische Situation des Patienten zu berücksichtigen, um eine korrekte Diagnose zu stellen.
