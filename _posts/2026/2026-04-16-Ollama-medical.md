@@ -79,7 +79,7 @@ Jetzt mal was anderes:
 
 <span style="color:green">&gtbitte befunde dieses EKG: '/home/user/Bilder/Bildschirmfotos/Bildschirmfoto vom 2026-04-16 10-34-58.png' </<span>><br />
 
-Added image '/home/gerry/Bilder/Bildschirmfotos/Bildschirmfoto vom 2026-04-16 10-34-58.png'
+Added image '/home/user/Bilder/Bildschirmfotos/Bildschirmfoto vom 2026-04-16 10-34-58.png'
 Hier ist die Befundung des EKG:
 
 **Befunde:**
